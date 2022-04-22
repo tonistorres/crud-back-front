@@ -254,6 +254,10 @@ cd front-end
 npx create-react-app app-reservas
 ```
 
+### 7 - Dockerizando aplicação:
+
+#### 7.1 - MYSQL Dockerizado:
+
 
 ### 4- Sobre os  END-POINTS:
 
