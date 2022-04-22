@@ -207,7 +207,9 @@ git tag -a "nome_tag" -m"" id
  > Configurando o scrip que inicializar nossa aplicação, o arquivo principal da nossa aplicação será server.js
 
  ```javascritp
-
+"scripts": {
+    "start": "nodemon server.js"
+  },
  ```
 
 
