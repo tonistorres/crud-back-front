@@ -203,6 +203,14 @@ git tag -a "nome_tag" -m"" id
 - [x] - npm i --save-dev sinon 
 - [Link Pacote npm Sinon](https://www.npmjs.com/package/sinon)
 
+### 3.1 - Configurações iniciais package.json (Sripts):
+ > Configurando o scrip que inicializar nossa aplicação, o arquivo principal da nossa aplicação será server.js
+
+ ```javascritp
+
+ ```
+
+
 ### 4- Sobre os  END-POINTS:
 
 #### 4.1 - O que é um End-Point?
