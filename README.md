@@ -261,37 +261,50 @@ npx create-react-app app-reservas
 
 ```yml
 version: '3.1'
-# inicialmente teremos 02(dois) microserviços trabalhando conjuntamente o mysql e o nodeJS (Back-End) 
+# inicialmente teremos 02(dois) microserviços trabalhando conjuntamente o mysql e o nodeJS (API - Back-End) 
 services:
+
+# 1º serviço mysql
   mysql:  
+  # baixar a imagem do mysql 5.7 no docker hub
       image: mysql:5.7
+      # da um nome para o nosso container mysql
       container_name: container-mysql
+      # configurar nossa vairável de ambiente 
       environment:
-        - MYSQL_ROOT_PASSWORD=1020
+        - MYSQL_ROOT_PASSWORD=xxxx
       ports:
       # rodar na porta 3308 na  minha maquina e 3306 no container
         - 3308:3306  
+
+  # 2º serviço      
   api:
+  # Baixar a última versão do node tag (latest)
     image: node:latest
+    # vamos nomear o container como container-api
     container_name: container-api
+    # restartar automaticamente a aplicação 
     restart: always
+    # configurando a porta onde vai rodar api dentro do container docker
     ports:
     # rodar na porta 3001 na  minha maquina e 3001 no container
       - 3001:3001
+    # configurando as variaveis de ambiente do mysql  
     environment:
         - DB_HOST=mysql
         - DB_NAME=dbreservas
         - DB_USER=root
         - DB_PASSWORD=1020
         - SERVER_PORT:3001
+    # Fazendo um bind entre minha pasta back-end e usr/app dentro do meu container node    
     volumes:
       - ./back-end:/usr/app
+    # setando meu diretório de trabalho onde será refletido as mudanças feitas na pasta back-end  
     working_dir: /usr/app
+    # por fim vamos rodar o comando npm install e npm start para instalar as dependencias do meu projeto 
+    # dentro do container e por fim inicializar minha aplicação back-end
     command: bash -c "npm install && npm start"            
 ```
-
-#### 7.1 - MYSQL Dockerizado:
-
 
 
 ### 4- Sobre os  END-POINTS:
