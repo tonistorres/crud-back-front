@@ -69,7 +69,7 @@ cd back-end
 mkdir src
 ```
 
-- [x] - Executar o comando de inicialização do git localmente na pasta;
+- [x] - Executar o comando de inicialização do git localmente na RAIZ do Projeto crud-back-front ;
 
 ```console
 git init
@@ -87,10 +87,9 @@ tonistorres/crud-back-front
 git remote add origin xpto.git
 ```
 
-- [x] - instalar o "git-commit-msg-linter": "^4.1.1";
+- [x] - Na pasta back-end onde se encontra o arquivo package.json instalar  "git-commit-msg-linter";
 
 ```console
-npm init -y
 npm i git-commit-msg-linter -D
 ```
 > Observacão: Significado das tags relacionadas ao commit-msg-linter
@@ -151,7 +150,10 @@ git tag -a "nome_tag" -m"" id
 - [x] - sinon: ^13.0.1
   
 
-### 3 - Comandos utilizados na instalação:
+### 3 - Instalando Dependências:
+
+> Todos os comando abaixo deverão ser utilizado dentro da pasta back-end.
+
 - [x] - npm install -D nodemon;
 - [Link Pacote npm Nodemon ](https://duckduckgo.com)
 
@@ -162,10 +164,25 @@ git tag -a "nome_tag" -m"" id
  
 - [x] - npm i express;
 - [Link Express ](https://www.npmjs.com/package/express)
- 
-- [x] - npm install --save mysql2
+
+
+- [x] - npm install sequelize-cli;
+- [Link Pacote npm Sequelize-Cli ](https://www.npmjs.com/package/sequelize-cli)
+
+- [x] - npm i sequelize;
+- [Link Sequelize ](https://www.npmjs.com/package/sequelize)
+
+- [x] - npm i cors;
+- [Link Cors ](https://www.npmjs.com/package/cors)
+> o cors ele não é dependência de desenvolvimento, pois, em ambiente de produção ele deve constar na aplicação para fazer a conexão entre back e front.
+
+
+- [x] - npm install mysql2
  > Client Utilizado para fazer a conexão de uma palicação Node Com Mysql (connector);
- 
+
+- [x] - npm i dotenv
+ - [Link dotEnv ](https://www.npmjs.com/package/dotenv)
+
 - [x] - npm i body-parser
   > Middleware de análise do corpo do Node.js.
   > Analise os corpos de solicitação de entrada em um middleware antes de seus manipuladores,
@@ -185,6 +202,16 @@ git tag -a "nome_tag" -m"" id
 
 - [x] - npm i --save-dev sinon 
 - [Link Pacote npm Sinon](https://www.npmjs.com/package/sinon)
+
+### 3.1 - Configurações iniciais package.json (Sripts):
+ > Configurando o scrip que inicializar nossa aplicação, o arquivo principal da nossa aplicação será server.js
+
+ ```javascritp
+"scripts": {
+    "start": "nodemon server.js"
+  },
+ ```
+
 
 ### 4- Sobre os  END-POINTS:
 
