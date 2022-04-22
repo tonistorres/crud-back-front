@@ -231,6 +231,13 @@ git tag -a "nome_tag" -m"" id
                   |-------->|routes|
                   |
                   |--------> utils
+|front-end|                  
+     |
+     |---------> |node_modules|
+     |
+     |---------> |public|
+     |
+     |---------> |src| 
 
 ```         
 
