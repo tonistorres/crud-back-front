@@ -203,7 +203,7 @@ git tag -a "nome_tag" -m"" id
 - [x] - npm i --save-dev sinon 
 - [Link Pacote npm Sinon](https://www.npmjs.com/package/sinon)
 
-### 3.1 - Configurações iniciais package.json (Sripts):
+### 4 - Package.json, configurações back-end (Sripts):
  > Configurando o scrip que inicializar nossa aplicação, o arquivo principal da nossa aplicação será server.js
 
  ```javascritp
@@ -211,6 +211,52 @@ git tag -a "nome_tag" -m"" id
     "start": "nodemon server.js"
   },
  ```
+
+### 5 - Criando a estrutura de pastas (Projeto):
+
+```console
+
+|back-end|
+    |
+    |---------> |node_modules|
+    |
+    |---------> |src| 
+                  |
+                  |-------->|controllers|
+                  |
+                  |-------->|services|
+                  |
+                  |-------->|middlewares|
+                  |
+                  |-------->|routes|
+                  |
+                  |--------> utils
+
+```         
+
+### 6 - Configurando ambiente do Front-End:
+
+- [x] Criando uma Pasta front-end;
+
+```console
+mkdir front-end
+```
+
+- [x] - Entrando na pasta;
+
+```console
+cd front-end
+```
+
+- [x] - Rodando o comando de criacao da pasta de trabalho;
+
+```console
+npx create-react-app app-reservas
+```
+
+### 7 - Dockerizando aplicação:
+
+#### 7.1 - MYSQL Dockerizado:
 
 
 ### 4- Sobre os  END-POINTS:
