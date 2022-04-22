@@ -157,9 +157,6 @@ git tag -a "nome_tag" -m"" id
 - [x] - npm install -D nodemon;
 - [Link Pacote npm Nodemon ](https://duckduckgo.com)
 
-- [x] - npm install -D sequelize-cli;
-- [Link Pacote npm Nodemon ](https://www.npmjs.com/package/sequelize-cli)
-
   > Obs.: O D MAIÚSCULO é informa que é uma forma contraída de dizer que é uma Dependência de 
   > Desenvolvimento, ou seja, na hora de subir para a produção essa dependência não tem importancia para 
   > o bom funcionamento da minha aplicação, essa dependencia é somente para testes no momento do 
@@ -167,6 +164,13 @@ git tag -a "nome_tag" -m"" id
  
 - [x] - npm i express;
 - [Link Express ](https://www.npmjs.com/package/express)
+
+
+- [x] - npm install sequelize-cli;
+- [Link Pacote npm Nodemon ](https://www.npmjs.com/package/sequelize-cli)
+
+- [x] - npm i sequelize;
+- [Link Express ](https://www.npmjs.com/package/sequelize)
 
 - [x] - npm i cors;
 - [Link Cors ](https://www.npmjs.com/package/cors)
