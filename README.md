@@ -150,7 +150,10 @@ git tag -a "nome_tag" -m"" id
 - [x] - sinon: ^13.0.1
   
 
-### 3 - Todos os comando abaixo deverão ser utilizado dentro da pasta back-end:
+### 3 - Instalando Dependências:
+
+> Todos os comando abaixo deverão ser utilizado dentro da pasta back-end.
+
 - [x] - npm install -D nodemon;
 - [Link Pacote npm Nodemon ](https://duckduckgo.com)
 
@@ -161,7 +164,10 @@ git tag -a "nome_tag" -m"" id
  
 - [x] - npm i express;
 - [Link Express ](https://www.npmjs.com/package/express)
- 
+
+- [x] - npm i cors;
+- [Link Cors ](https://www.npmjs.com/package/cors)
+
 - [x] - npm install --save mysql2
  > Client Utilizado para fazer a conexão de uma palicação Node Com Mysql (connector);
  
