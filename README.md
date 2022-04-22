@@ -253,10 +253,44 @@ cd front-end
 ```console
 npx create-react-app app-reservas
 ```
-
+![Docker Node](./dockerNode.jpeg)
 ### 7 - Dockerizando aplicação:
 
+> Para aplicação ficar mais completa iremos trabalhar com micro serviços (docker), inicialmente iremos dockerizar o mysql e o NodeJS
+
+```yml
+version: '3.1'
+# inicialmente teremos 02(dois) microserviços trabalhando conjuntamente o mysql e o nodeJS (Back-End) 
+services:
+  mysql:
+      image: mysql:5.7
+      container_name: container-mysql
+      environment:
+        - MYSQL_ROOT_PASSWORD=1020
+      ports:
+      # rodar na porta 3308 na  minha maquina e 3306 no container
+        - 3308:3306  
+  api:
+    image: node:latest
+    container_name: container-api
+    restart: always
+    ports:
+    # rodar na porta 3001 na  minha maquina e 3001 no container
+      - 3001:3001
+    environment:
+        - DB_HOST=mysql
+        - DB_NAME=dbreservas
+        - DB_USER=root
+        - DB_PASSWORD=1020
+        - SERVER_PORT:3001
+    volumes:
+      - ./back-end:/usr/app
+    working_dir: /usr/app
+    command: bash -c "npm install && npm start"            
+```
+
 #### 7.1 - MYSQL Dockerizado:
+
 
 
 ### 4- Sobre os  END-POINTS:
