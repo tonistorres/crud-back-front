@@ -11,7 +11,8 @@
   "license": "ISC",
   "devDependencies": {
     "git-commit-msg-linter": "^4.1.2",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "sequelize-cli": "^6.4.1"
   },
   "dependencies": {
     "cors": "^2.8.5",

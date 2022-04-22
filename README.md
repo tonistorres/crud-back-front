@@ -157,6 +157,9 @@ git tag -a "nome_tag" -m"" id
 - [x] - npm install -D nodemon;
 - [Link Pacote npm Nodemon ](https://duckduckgo.com)
 
+- [x] - npm install -D sequelize-cli;
+- [Link Pacote npm Nodemon ](https://www.npmjs.com/package/sequelize-cli)
+
   > Obs.: O D MAIÚSCULO é informa que é uma forma contraída de dizer que é uma Dependência de 
   > Desenvolvimento, ou seja, na hora de subir para a produção essa dependência não tem importancia para 
   > o bom funcionamento da minha aplicação, essa dependencia é somente para testes no momento do 
@@ -167,6 +170,8 @@ git tag -a "nome_tag" -m"" id
 
 - [x] - npm i cors;
 - [Link Cors ](https://www.npmjs.com/package/cors)
+> o cors ele não é dependência de desenvolvimento, pois, em ambiente de produção ele deve constar na aplicação para fazer a conexão entre back e front.
+
 
 - [x] - npm install --save mysql2
  > Client Utilizado para fazer a conexão de uma palicação Node Com Mysql (connector);
