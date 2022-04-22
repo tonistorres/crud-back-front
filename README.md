@@ -167,19 +167,22 @@ git tag -a "nome_tag" -m"" id
 
 
 - [x] - npm install sequelize-cli;
-- [Link Pacote npm Nodemon ](https://www.npmjs.com/package/sequelize-cli)
+- [Link Pacote npm Sequelize-Cli ](https://www.npmjs.com/package/sequelize-cli)
 
 - [x] - npm i sequelize;
-- [Link Express ](https://www.npmjs.com/package/sequelize)
+- [Link Sequelize ](https://www.npmjs.com/package/sequelize)
 
 - [x] - npm i cors;
 - [Link Cors ](https://www.npmjs.com/package/cors)
 > o cors ele não é dependência de desenvolvimento, pois, em ambiente de produção ele deve constar na aplicação para fazer a conexão entre back e front.
 
 
-- [x] - npm install --save mysql2
+- [x] - npm install mysql2
  > Client Utilizado para fazer a conexão de uma palicação Node Com Mysql (connector);
- 
+
+- [x] - npm i dotenv
+ - [Link dotEnv ](https://www.npmjs.com/package/dotenv)
+
 - [x] - npm i body-parser
   > Middleware de análise do corpo do Node.js.
   > Analise os corpos de solicitação de entrada em um middleware antes de seus manipuladores,
