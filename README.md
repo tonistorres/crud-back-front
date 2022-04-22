@@ -69,7 +69,7 @@ cd back-end
 mkdir src
 ```
 
-- [x] - Executar o comando de inicialização do git localmente na pasta;
+- [x] - Executar o comando de inicialização do git localmente na RAIZ do Projeto crud-back-front ;
 
 ```console
 git init
@@ -87,10 +87,9 @@ tonistorres/crud-back-front
 git remote add origin xpto.git
 ```
 
-- [x] - instalar o "git-commit-msg-linter": "^4.1.1";
+- [x] - Na pasta back-end onde se encontra o arquivo package.json instalar  "git-commit-msg-linter";
 
 ```console
-npm init -y
 npm i git-commit-msg-linter -D
 ```
 > Observacão: Significado das tags relacionadas ao commit-msg-linter
@@ -151,7 +150,7 @@ git tag -a "nome_tag" -m"" id
 - [x] - sinon: ^13.0.1
   
 
-### 3 - Comandos utilizados na instalação:
+### 3 - Todos os comando abaixo deverão ser utilizado dentro da pasta back-end:
 - [x] - npm install -D nodemon;
 - [Link Pacote npm Nodemon ](https://duckduckgo.com)
 

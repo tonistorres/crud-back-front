@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "git-commit-msg-linter": "^4.1.2"
+    "git-commit-msg-linter": "^4.1.2",
+    "nodemon": "^2.0.15"
   }
 }
