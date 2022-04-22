@@ -212,6 +212,27 @@ git tag -a "nome_tag" -m"" id
   },
  ```
 
+### 3.2 - Criando a estrutura de pastas (Projeto):
+
+```console
+
+|back-end|
+    |
+    |---------> |node_modules|
+    |
+    |---------> |src| 
+                  |
+                  |-------->|controllers|
+                  |
+                  |-------->|services|
+                  |
+                  |-------->|middlewares|
+                  |
+                  |-------->|routes|
+                  |
+                  |--------> utils
+
+```         
 
 ### 4- Sobre os  END-POINTS:
 
