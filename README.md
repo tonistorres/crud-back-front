@@ -231,6 +231,13 @@ git tag -a "nome_tag" -m"" id
                   |-------->|routes|
                   |
                   |--------> utils
+|front-end|                  
+     |
+     |---------> |node_modules|
+     |
+     |---------> |public|
+     |
+     |---------> |src| 
 
 ```         
 
@@ -253,109 +260,67 @@ cd front-end
 ```console
 npx create-react-app app-reservas
 ```
+![Docker Node](./dockerNode.jpeg)
+![Docker Mysql](./dockerMysql.png)
 
 ### 7 - Dockerizando aplicação:
 
-#### 7.1 - MYSQL Dockerizado:
+> Para aplicação ficar mais completa iremos trabalhar com micro serviços (docker), inicialmente iremos dockerizar o mysql e o NodeJS
 
+```yml
+version: '3.1'
+# inicialmente teremos 02(dois) microserviços trabalhando conjuntamente o mysql e o nodeJS (API - Back-End) 
+services:
 
-### 4- Sobre os  END-POINTS:
+# 1º serviço mysql
+  mysql:  
+  # baixar a imagem do mysql 5.7 no docker hub
+      image: mysql:5.7
+      # da um nome para o nosso container mysql
+      container_name: container-mysql
+      # configurar nossa vairável de ambiente 
+      environment:
+        - MYSQL_ROOT_PASSWORD=xxxx
+      ports:
+      # rodar na porta 3308 na  minha maquina e 3306 no container
+        - 3308:3306  
 
-#### 4.1 - O que é um End-Point?
-> Um endpoint de um web service é a URL onde seu serviço pode ser acessado por uma aplicação cliente. 
-> [Fonte: Stack OverFlow ](https://pt.stackoverflow.com/questions/86399/qual-a-diferen%C3%A7a-entre-endpoint-e-api);
-
-##### 4.1.1 - End-Point create:
-> Nesta Api o End-Point create foi distribuído em 03(três) camadas (Controller, Service e Model), onde
-> utilizamos conceitos e abstraçẽos de engenharia de software para isolar a lógica de responsábilidades
-> em suas respectivas camadas. A principal funcionalidade desse end-point é criar um usuário novo dentro
-> do banco de dados inovec87_sisseg com ajuda do gerenciador de banco de dados mysql e um client que é um
-> paconte npm mysql2 para fazer a comunicação entre a aplicação node e o mysql. Abaixo segue uma breve
-> descrição de como foi escrito e dividido o código por meio de um gif animator.
-
-![END-POINT CREATE](./created.gif)
-
-##### 4.1.2 End-Point delete:
-> O End-Point delete foi distribuído em 03(três) camadas (Controller, Service e Model), 
-> sua funcionalidade consiste em apagar do banco de dados um registro específico mediante
-> requisição passada pela url (req.params).
-
-![END-POINT CREATE](./delete.gif)
-
-
-##### 4.1.2 End-Point getAll (buscar por todos registros):
-> O End-Point getAll foi distribuído em 03(três) camadas (Controller, Service e Model), 
-> sua funcionalidade consiste em buscar todos os registros do banco de dados mediante
-> requisição passada pela url (req).
-
-![END-POINT CREATE](./getAll.gif)
-
-
-
-##### 4.1.3 End-Point getById (buscar um registros específico):
-> O End-Point getById foi distribuído em 03(três) camadas (Controller, Service e Model), 
-> sua funcionalidade consiste em buscar no banco de dados um usuário específico mediante
-> requisição passsada por url (req.params).
-
-![END-POINT CREATE](./getById.gif)
-
-
-##### 4.1.4 End-Point getUpdate (Alterar um Registro Específico):
-> O End-Point getUpdate foi distribuído em 03(três) camadas (Controller, Service e Model), 
-> sua funcionalidade consiste em fazer atualização das informaçẽos do usuário mediante, 
-> mediante requisição enviada pelo (req.body).
-
-![END-POINT CREATE](./update.gif)
-
-
-##### 4.1.5 End-Point getLogin (Verificar solicitação usuário):
-> O End-Point getLogin foi distribuído em 03(três) camadas (Controller, Service e Model), 
-> sua funcionalidade em fazer uma verificação no DB, se usuário e senha foram inputados de forma
-> satisfatória, então, será gerado um token de autenticação com a validade de 15minutos para ter
-> acesso às rotas que o usuário precisa de autorização.
-
-![END-POINT CREATE](./login.gif)
-
-### ADICIONANDO UMA CAMADA DE SEGURANÇA NA APLICAÇÃO COM JSON WEB TOKEN (JWT):
-
-![json web token](./jwt.png)
-
-##### O QUE É JWT? 
-
-> Json Web Token, é um padrão para autenticação e troca de informações, definido pela RFC7519. De forma bastante
-> resumida, consiste em um conjunto de solicitações. O JWT se faz essencial por ser uma forma extremamente segura
-> de compartilhamento de informações e autenticação de usuários. É um formato baseado em texto e amplamente aceito 
-> por diversas linguagens, característica que carrega por utilizar JSON como base.
-
-> Esse é o grande diferencial do JWT em relação a outras opções, pois o JSON é um padrão mais vantajoso de troca e
-> armazenamento de informação. Alguns dos concorrentes são o SWT (Simple Web Tokens) e o SAML (Security Assertion 
-> Markup Language Tokens), que usa o padrão XML.
-
-> O JWT é, na verdade, um dos elementos de uma estrutura ainda maior, o JOSE (Json Object Signing and Encryption). 
-> No JOSE, estão contidas várias outras especificações. São elas: o JWE (Json Web Encryption), responsável pela 
-> criptografia para a assinatura do token; o JWA (Json Web Algorithms), a respeito do algoritmo; JWK (Json Web Keys)
-> , correspondente as chaves para assinatura; JWS (Json Web Signature), a assinatura do token. Por fim, o JWT, 
-> elemento JOSE, é o token em si
-> [Fonte: Blog Trybe ](https://blog.betrybe.com/tecnologia/jwt-json-web-tokens/);
-
-
-### Configurando ambiente para receber JWT:
-
-- [x] - Primeiro iremos instalar o pacote npm jsonwebtoken;
-
-```console 
-npm install jsonwebtoken
-```
-- [x] - Instalando dotenv para trabalharmos com vaiáveis de ambiente;
-
-```console 
-npm i dotenv
+  # 2º serviço      
+  api:
+  # Baixar a última versão do node tag (latest)
+    image: node:latest
+    # vamos nomear o container como container-api
+    container_name: container-api
+    # restartar automaticamente a aplicação 
+    restart: always
+    # configurando a porta onde vai rodar api dentro do container docker
+    ports:
+    # rodar na porta 3001 na  minha maquina e 3001 no container
+      - 3001:3001
+    # configurando as variaveis de ambiente do mysql  
+    environment:
+        - DB_HOST=mysql
+        - DB_NAME=dbreservas
+        - DB_USER=root
+        - DB_PASSWORD=1020
+        - SERVER_PORT:3001
+    # Fazendo um bind entre minha pasta back-end e usr/app dentro do meu container node    
+    volumes:
+      - ./back-end:/usr/app
+    # setando meu diretório de trabalho onde será refletido as mudanças feitas na pasta back-end  
+    working_dir: /usr/app
+    # por fim vamos rodar o comando npm install e npm start para instalar as dependencias do meu projeto 
+    # dentro do container e por fim inicializar minha aplicação back-end
+    command: bash -c "npm install && npm start"            
 ```
 
-### Adicionando ORM Sequelize ao Projeto 
-![ORM Sequelize](./sequelize.jpeg)
 
-#### O que é ORM?
+![ORM Sequelize](./sequelize.png)
+
+### 8 - Sequelize:
+
+
+#### O que é ORM (Sequelize)?
 
 > O Sequelize é um ORM (Object-Relational Mapper)
 > para Node.js, que tem suporte aos bancos de dados
@@ -366,26 +331,11 @@ npm i dotenv
 
 [Fonte: Blog Rocketseat ](https://blog.rocketseat.com.br/nodejs-express-sequelize/);
 
-#### Preparando o ambiente para instalação do Sequelize:
-
-1 - instalação do ORM sequelize
-
+#### Criando estruturas de pastas do ORM (Sequelize) no projeto:
 ```console
-npm install sequelize   
+
+
 ```
-
-2- instalar um cliente responsável por gerar e executar operações 
-
-```console
-npm install sequelize-cli
-```
-
-3- instalar o mysql2 necessário para fazer a conexão entre o MYSQL e Node
-
-```console
-npm install mysql2
-```
-
 ## Iniciando os trabalhos com Sequelize 
 
 1 - iniciando um projeto com Sequelize
