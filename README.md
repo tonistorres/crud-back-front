@@ -254,6 +254,7 @@ cd front-end
 npx create-react-app app-reservas
 ```
 ![Docker Node](./dockerNode.jpeg)
+![Docker Mysql](./dockerMysql.png)
 ### 7 - Dockerizando aplicação:
 
 > Para aplicação ficar mais completa iremos trabalhar com micro serviços (docker), inicialmente iremos dockerizar o mysql e o NodeJS
@@ -262,7 +263,7 @@ npx create-react-app app-reservas
 version: '3.1'
 # inicialmente teremos 02(dois) microserviços trabalhando conjuntamente o mysql e o nodeJS (Back-End) 
 services:
-  mysql:
+  mysql:  
       image: mysql:5.7
       container_name: container-mysql
       environment:
