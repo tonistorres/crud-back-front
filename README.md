@@ -354,6 +354,14 @@ services:
 npx sequelize-cli init
 ```
 
+```console
+Esse comando irá criar as seguintes pastas:
+config : contém um arquivo de configuração, com orientações para o CLI se conectar com o nosso banco de dados;
+models : contém todos os modelos da nossa aplicação;
+migrations : contém todos os arquivos de migração da nossa aplicação;
+seeders : contém todos os arquivos de "seeds" (sementes que são usadas para popular o banco).
+```
+
 ##### 8.2.4 - Estrutura geral de pastas no Back-End:
 ```console
 
@@ -388,22 +396,6 @@ npx sequelize-cli init
 ```
 ## Iniciando os trabalhos com Sequelize 
 
-1 - iniciando um projeto com Sequelize
-
-- [x]  npx sequelize-cli init
-
-```console
-Esse comando irá criar as seguintes pastas:
-config : contém um arquivo de configuração, com orientações para o CLI se conectar com o nosso banco de dados;
-models : contém todos os modelos da nossa aplicação;
-migrations : contém todos os arquivos de migração da nossa aplicação;
-seeders : contém todos os arquivos de "seeds" (sementes que são usadas para popular o banco).
-```
-2 - vamos instalar a biblioteca dotenv para trabalharmos com variáveis de ambiente 
-- [x]  npm i dotenv
-
-3 - agora iremos criar arquivo .gitignore e definiar que não iremos subir para o github o .env e node_modules/  
-- [x]  .gitignore
 
 4 - Entrar no arquivo config.json e configurar as chaves que fazer acesso ao seu banco de dados mysql
 
