@@ -348,6 +348,13 @@ services:
 
 ![Ilustração](./ilustre1.png)
 
+##### 8.2.3.1 - Comando para executar o arquivo .sequelizerc contendo o mapeamento da estrutura de pastas e arquivos do ORM Sequelize:
+
+```console
+npx sequelize-cli init
+```
+
+##### 8.2.4 - Estrutura geral de pastas no Back-End:
 ```console
 
 |back-end|
