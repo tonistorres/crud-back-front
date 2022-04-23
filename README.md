@@ -397,9 +397,57 @@ development:{
 };
 
 ```
+##### 8.2.3.3 - Criando a model e a migration da tabela reservation:
 
+> Para criarmos a  model e a migration utilizando o sequelize-cli de forma automatica, utilizaremos o seguinte comando abaixo:
 
-##### 8.2.4 - Estrutura geral de pastas no Back-End:
+```console
+npx sequelize-cli model:generate --nam Reservation --attributes client:string,room:string,days:integer,reservationDate:date,totalPrice:integer
+```
+##### 8.2.4 - Criando a table reservation no DB MYSQ dentro de um container DOCKER:
+
+> Comando de manipulação da estrutura do banco de dados, serão executado dentro do docker devido as variáveis de ambiente do banco que estão vinculadas dentro do container docker, conforme explicitado no docker-compose .
+
+- [x] - Primeiramente vamos acessar o container onde esta rodando a api;
+
+```console
+docker ps
+docker exec -it container-api /bin/sh
+```
+- [x] - Vamos criar o banco de dados dentro do container-mysql à partir do container-api que contem as variáveis de ambiente do banco de dados conforme descrito no arquivo docker-compose.yml;
+
+```console
+npx sequelize-cli db:create
+```
+
+- [x] - Vamos criar a tabela Reservations no banco de dados rodando 20220423152943-create-reservation.js;
+
+```console
+npx sequelize-cli db:migrate
+```
+
+- [x] - Modificando o escopo de reservation.js de classe para função;
+
+```javascript
+
+module.exports = (sequelize, DataTypes) => {
+
+  const Reservation = sequelize.define('Reservation', {
+    client: DataTypes.STRING,
+    room: DataTypes.STRING,
+    days: DataTypes.INTEGER,
+    reservationDate: DataTypes.DATE,
+    totalPrice: DataTypes.INTEGER
+
+});
+
+return Reservation;
+
+}
+
+```
+
+##### 8.2.5 - Estrutura geral de pastas no Back-End:
 ```console
 
 |back-end|
@@ -431,80 +479,3 @@ development:{
                   |--------> |database|
 
 ```
-## Iniciando os trabalhos com Sequelize 
-
-5 - Criando o banco de dados já predefinido no arquivo config.json 
-- [x]  npx sequelize db:create
-
-```console
-Loaded configuration file "config/config.json".
-Using environment "development".
-Database dbuser created.
-```
-
-6 - verirfique no seu CLI Mysql se o banco foi criado
-
-```console
-
-Execute o comando no terminal:
-mysql -u root -p
-
-coloque sua senha de acesso ao mysql: 
-passord: xxxx
-
-Dentro do banco execute  o comando abaixo para listar todas db:
-show databases;
-
-```
-
-7 - Criando uma tabela User dentro de (model) com um atributo por nome fullName e 
-uma migration com uma copia da tabela criada:
-
-```console
-npx sequelize model:generate --name User --attributes fullName:string
-```
-#### Observação:
-> O arquivo user.js criado na pasta (model) está mapeando a tabela utilizando classe,
-> ou seja, usando POO (Paradigma da Orientação Objeto), porém, nesse momento estamos 
-> usando programação funcioal daí iremo converter todo conteúdo criando em classe para 
-> função.
-
-8 - Para executarmos um migrations de forma ela executar uma operação no banco de dados 
-utilizamos o CLI Sequelize instalados com o abaixo explicitado que ela irá fazer alterações 
-na tabela do banco de dados setando no arquivo config.json
-
-```console 
-    npx sequelize db:migrate
-```
-
-9 - Caso queira reverter uma migrations utilize o comando abaixo: 
-
-```console 
-npx sequelize db:migrate:undo
-```
-
-10 - Criar uma migrations para adicionarmos um campo numa tabel já criada:
-
-```console 
-npx sequelize migration:generate --name add-column-phone-table-users
-```
-##### O corpo da migrations ficará da seguinte forma:
-
-```javascript 
-
-'use strict';
-
-module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    await queryInterface.addColumn('Users', 'phone_num', {
-      type: Sequelize.STRING,
-    });
-   },
- 
-   down: async (queryInterface, Sequelize) => {
-     await queryInterface.removeColumn('Users', 'phone_num');
-   }
-};
-
-```
-
