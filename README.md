@@ -406,10 +406,17 @@ npx sequelize-cli model:generate --nam Reservation --attributes client:string,ro
 ```
 ##### 8.2.4 - Criando a table reservation no DB MYSQ dentro de um container DOCKER:
 
-- [x] - Primeiramente devo acessar o terminal do container docker;
+- [x] - Primeiramente vamos acessar o container onde esta rodando a api;
 
-> 
+```console
+docker ps
+docker exec -it container-api /bin/sh
+```
+- [x] - Vamos listar tudo que tem dentro desse container;
 
+```console
+ls
+```
 
 ##### 8.2.5 - Estrutura geral de pastas no Back-End:
 ```console
