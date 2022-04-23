@@ -426,6 +426,27 @@ npx sequelize-cli db:create
 npx sequelize-cli db:migrate
 ```
 
+- [x] - Modificando o escopo de reservation.js de classe para função;
+
+```javascript
+
+module.exports = (sequelize, DataTypes) => {
+
+  const Reservation = sequelize.define('Reservation', {
+    client: DataTypes.STRING,
+    room: DataTypes.STRING,
+    days: DataTypes.INTEGER,
+    reservationDate: DataTypes.DATE,
+    totalPrice: DataTypes.INTEGER
+
+});
+
+return Reservation;
+
+}
+
+```
+
 ##### 8.2.5 - Estrutura geral de pastas no Back-End:
 ```console
 
