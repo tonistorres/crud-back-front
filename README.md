@@ -361,6 +361,39 @@ models : contém todos os modelos da nossa aplicação;
 migrations : contém todos os arquivos de migração da nossa aplicação;
 seeders : contém todos os arquivos de "seeds" (sementes que são usadas para popular o banco).
 ```
+##### 8.2.3.2 - Configurando as credenciais do banco de dados:
+
+> Acessar a pasta:
+
+```console
+|back-end|
+    |
+    |------->|src|
+               |
+               |------->|database|
+                              |
+                              |------->|config|
+                  
+```
+
+> Entrar no arquivo config.js e configurar as chaves que fazer acesso ao seu banco de dados mysql,
+> neste caso específico faremos essa conexão com um container docker já que estamos trabalhando com 
+> micro-serviços.
+
+##### Observação: Trabalhar sempre com variáveis de ambiente.
+
+```console
+{
+  "development": {
+    "username": "root",
+    "password": "",
+    "database": "example",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+
+```
+
 
 ##### 8.2.4 - Estrutura geral de pastas no Back-End:
 ```console
@@ -395,25 +428,6 @@ seeders : contém todos os arquivos de "seeds" (sementes que são usadas para po
 
 ```
 ## Iniciando os trabalhos com Sequelize 
-
-
-4 - Entrar no arquivo config.json e configurar as chaves que fazer acesso ao seu banco de dados mysql
-
-```console
-{
-  "development": {
-    "username": "root",
-    "password": "",
-    "database": "orm_example",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  }
-
-```
-
-> OBSERVAÇÃO: adicionar o a pasta config/config.json ao .gitignore para que informações sensívei não subam para o 
-> github.
-
 
 5 - Criando o banco de dados já predefinido no arquivo config.json 
 - [x]  npx sequelize db:create
