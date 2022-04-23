@@ -230,7 +230,7 @@ git tag -a "nome_tag" -m"" id
                   |
                   |-------->|routes|
                   |
-                  |--------> utils
+                  |--------> |utils|
 |front-end|                  
      |
      |---------> |node_modules|
@@ -320,7 +320,7 @@ services:
 ### 8 - Sequelize:
 
 
-#### O que é ORM (Sequelize)?
+#### 8.1 - O que é ORM (Sequelize)?
 
 > O Sequelize é um ORM (Object-Relational Mapper)
 > para Node.js, que tem suporte aos bancos de dados
@@ -331,9 +331,50 @@ services:
 
 [Fonte: Blog Rocketseat ](https://blog.rocketseat.com.br/nodejs-express-sequelize/);
 
-#### Criando estruturas de pastas do ORM (Sequelize) no projeto:
+#### 8.2 - Criando estruturas de pastas do ORM (Sequelize) no projeto:
+
+> Para organizar as pastas (migrations, seedrs e models) do ORM Sequelize dentro da pasta back-end na sub-pasta database, iremos primeiramente criar uma aquivo na raiz da pasta back-end com nome de .sequelizerc:
+
+##### 8.2.1 - Ilustração do arquivo .sequelizerc na pasta back-end:
+
+![Ilustração](./SeqRecExport.png)
+
+
+##### 8.2.2 - Porque utilizar esse arquivo?
+> Esse arquivo irá mapear a estrutura inicial de pastas e arquivos que serão acessadas pelo ORM (Sequelize).  
+
+
+##### 8.2.3 - Ilustração do conteúdo do arquivo:
+
+![Ilustração](./ilustre1.png)
+
 ```console
 
+|back-end|
+    |
+    |---------> |node_modules|
+    |
+    |---------> |src| 
+                  |
+                  |-------->|controllers|
+                  |
+                  |-------->|database|
+                  |             |
+                  |             |------------>|config|
+                  |             |
+                  |             |------------>|migrations|
+                  |             |
+                  |             |
+                  |                  
+                  |-------->|services|
+                  |
+                  |-------->|middlewares|
+                  |
+                  |-------->|routes|
+                  |
+                  |--------> |utils|
+                  |
+                  |--------> |database|
 
 ```
 ## Iniciando os trabalhos com Sequelize 
