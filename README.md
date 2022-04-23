@@ -406,16 +406,24 @@ npx sequelize-cli model:generate --nam Reservation --attributes client:string,ro
 ```
 ##### 8.2.4 - Criando a table reservation no DB MYSQ dentro de um container DOCKER:
 
+> Comando de manipulação da estrutura do banco de dados, serão executado dentro do docker devido as variáveis de ambiente do banco que estão vinculadas dentro do container docker, conforme explicitado no docker-compose .
+
 - [x] - Primeiramente vamos acessar o container onde esta rodando a api;
 
 ```console
 docker ps
 docker exec -it container-api /bin/sh
 ```
-- [x] - Vamos listar tudo que tem dentro desse container;
+- [x] - Vamos criar o banco de dados dentro do container-mysql à partir do container-api que contem as variáveis de ambiente do banco de dados conforme descrito no arquivo docker-compose.yml;
 
 ```console
-ls
+npx sequelize-cli db:create
+```
+
+- [x] - Vamos criar a tabela Reservations no banco de dados rodando 20220423152943-create-reservation.js;
+
+```console
+npx sequelize-cli db:migrate
 ```
 
 ##### 8.2.5 - Estrutura geral de pastas no Back-End:
