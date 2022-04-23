@@ -230,7 +230,7 @@ git tag -a "nome_tag" -m"" id
                   |
                   |-------->|routes|
                   |
-                  |--------> utils
+                  |--------> |utils|
 |front-end|                  
      |
      |---------> |node_modules|
@@ -320,7 +320,7 @@ services:
 ### 8 - Sequelize:
 
 
-#### O que é ORM (Sequelize)?
+#### 8.1 - O que é ORM (Sequelize)?
 
 > O Sequelize é um ORM (Object-Relational Mapper)
 > para Node.js, que tem suporte aos bancos de dados
@@ -331,16 +331,28 @@ services:
 
 [Fonte: Blog Rocketseat ](https://blog.rocketseat.com.br/nodejs-express-sequelize/);
 
-#### Criando estruturas de pastas do ORM (Sequelize) no projeto:
+#### 8.2 - Criando estruturas de pastas do ORM (Sequelize) no projeto:
+
+> Para organizar as pastas (migrations, seedrs e models) do ORM Sequelize dentro da pasta back-end na sub-pasta database, iremos primeiramente criar uma aquivo na raiz da pasta back-end com nome de .sequelizerc:
+
+##### 8.2.1 - Ilustração do arquivo .sequelizerc na pasta back-end:
+
+![Ilustração](./SeqRecExport.png)
+
+
+##### 8.2.2 - Porque utilizar esse arquivo?
+> Esse arquivo irá mapear a estrutura inicial de pastas e arquivos que serão acessadas pelo ORM (Sequelize).  
+
+
+##### 8.2.3 - Ilustração do conteúdo do arquivo:
+
+![Ilustração](./ilustre1.png)
+
+##### 8.2.3.1 - Comando para executar o arquivo .sequelizerc contendo o mapeamento da estrutura de pastas e arquivos do ORM Sequelize:
+
 ```console
-
-
+npx sequelize-cli init
 ```
-## Iniciando os trabalhos com Sequelize 
-
-1 - iniciando um projeto com Sequelize
-
-- [x]  npx sequelize-cli init
 
 ```console
 Esse comando irá criar as seguintes pastas:
@@ -349,29 +361,77 @@ models : contém todos os modelos da nossa aplicação;
 migrations : contém todos os arquivos de migração da nossa aplicação;
 seeders : contém todos os arquivos de "seeds" (sementes que são usadas para popular o banco).
 ```
-2 - vamos instalar a biblioteca dotenv para trabalharmos com variáveis de ambiente 
-- [x]  npm i dotenv
+##### 8.2.3.2 - Configurando as credenciais do banco de dados:
 
-3 - agora iremos criar arquivo .gitignore e definiar que não iremos subir para o github o .env e node_modules/  
-- [x]  .gitignore
-
-4 - Entrar no arquivo config.json e configurar as chaves que fazer acesso ao seu banco de dados mysql
+> Acessar a pasta:
 
 ```console
-{
-  "development": {
-    "username": "root",
-    "password": "",
-    "database": "orm_example",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  }
+|back-end|
+    |
+    |------->|src|
+               |
+               |------->|database|
+                              |
+                              |------->|config|
+                  
+```
+
+> Entrar no arquivo config.js e configurar as chaves que fazer acesso ao seu banco de dados mysql,
+> neste caso específico faremos essa conexão com um container docker já que estamos trabalhando com 
+> micro-serviços.
+
+##### Observação: Trabalhar sempre com variáveis de ambiente.
+
+```console
+
+require('dotenv').config();
+
+module.exports = {
+development:{
+    username:process.env.DB_USER,
+    password:process.env.DB_PASSWORD,
+    database:process.env.DB_NAME,
+    host: process.env.DB_HOST,
+    dialect:'mysql',
+}
+};
 
 ```
 
-> OBSERVAÇÃO: adicionar o a pasta config/config.json ao .gitignore para que informações sensívei não subam para o 
-> github.
 
+##### 8.2.4 - Estrutura geral de pastas no Back-End:
+```console
+
+|back-end|
+    |
+    |---------> |node_modules|
+    |
+    |---------> |src| 
+                  |
+                  |-------->|controllers|
+                  |
+                  |-------->|database|
+                  |             |
+                  |             |------------>|config|
+                  |             |
+                  |             |------------>|migrations|
+                  |             |
+                  |             |------------>|models|
+                  |             |
+                  |             |-------------|seeders|
+                  |                  
+                  |-------->|services|
+                  |
+                  |-------->|middlewares|
+                  |
+                  |-------->|routes|
+                  |
+                  |--------> |utils|
+                  |
+                  |--------> |database|
+
+```
+## Iniciando os trabalhos com Sequelize 
 
 5 - Criando o banco de dados já predefinido no arquivo config.json 
 - [x]  npx sequelize db:create
