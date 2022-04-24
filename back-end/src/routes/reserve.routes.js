@@ -7,7 +7,7 @@ reserveRoutes.route('/')
 
 
 reserveRoutes.route('/:id')
-.get(reserve.get)
+.get(reserve.getById)
 .put(reserve.update)
 .delete(reserve.remove)
 
