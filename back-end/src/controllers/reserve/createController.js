@@ -1,6 +1,6 @@
 const { create } = require('../../services/reserve');
 
-const createReserveController = async (req, res, next) => {
+const createController = async (req, res, next) => {
  try {
       const { client, room, days, reservationDate, totalPrice } = req.body;
       const resultReserve = await create({ client, room, days, reservationDate, totalPrice });
@@ -9,3 +9,5 @@ const createReserveController = async (req, res, next) => {
     next(error);
   }
 };
+
+module.exports = createController;
