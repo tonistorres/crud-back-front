@@ -265,7 +265,7 @@ npx create-react-app app-reservas
 
 ### 7 - Dockerizando aplicação:
 
-> Para aplicação ficar mais completa iremos trabalhar com micro serviços (docker), inicialmente iremos dockerizar o mysql e o NodeJS
+> Para aplicação ficar mais completa iremos trabalhar com micro serviços (docker), inicialmente iremos dockerizar o mysql e o NodeJS.
 
 ```yml
 version: '3.1'
@@ -314,6 +314,11 @@ services:
     command: bash -c "npm install && npm start"            
 ```
 
+> Para rodar o arquivo docker-compose digite o comando abaixo explicitado.
+
+```console
+docker-compose up -d
+```
 
 ![ORM Sequelize](./sequelize.png)
 
