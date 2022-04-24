@@ -1,14 +1,14 @@
-const create = require('./createReserController.js');
-const remove = require('./deleteReserveController.js');
-const get = require('./getReserveController.js');
-const list = require('./listReserveController.js');
-const update = require('./updateReserveController.js');
+const create = require('./createController');
+const remove = require('./deleteController');
+const getById = require('./getByIdController');
+const list = require('./listController');
+const update = require('./updateController');
 
 
 module.exports ={
     create,
     remove,
-    get,
+    getById,
     list,
     update
 }
