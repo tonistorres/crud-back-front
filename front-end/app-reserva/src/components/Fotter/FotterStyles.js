@@ -2,16 +2,12 @@ import styled, { keyframes } from "styled-components";
 
 export const ContainerRedeSociais = styled.section`
   @media screen and (max-width: 2300px) and (min-width: 1px) {
-    align-items: center;
-    /* background-color: #509FA9; */
+    /* align-items: center; */
+    /* background-color: #E9E9E9; */
     bottom: 1px;
-    color: #f5f5f5;
     display: flex;
-    height: 37px;
+    /* height: 5vh; */
     justify-content: space-around;
-    left: 0px;
-    margin: 0 10px;
-    margin-bottom: 0px;
     position: fixed;
     right: 0px;
     width: 100%;

@@ -2,6 +2,8 @@ const { create } = require('../../services/reserve');
 
 const createController = async (req, res, next) => {
  try {
+   console.log(req.body);
+   
       const { client, room, days, reservationDate, totalPrice } = req.body;
       const resultReserve = await create({ client, room, days, reservationDate, totalPrice });
       return res.status(201).json(resultReserve);
