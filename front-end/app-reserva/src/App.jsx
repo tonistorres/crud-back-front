@@ -5,7 +5,6 @@ import reservations from "./service/connection-back.js";
 import FormInputsReserve from './components/InputsReserve/FormInputsReserve.jsx';
 import ListReserve from './components/ListReserve/ListReserve.jsx';
 import { ContainerMain } from './AppStyle';
-// import axios from "axios";
 
 
 export default class App extends Component {
@@ -13,23 +12,24 @@ export default class App extends Component {
     super(props);
     this.state = {
       arrayValue: [],
-      clientGlogal:'',
+      clientGlogal: '',
       roomGlobal: '',
       daysGlobal: 0,
-      reservationDateGlobal:'2022-05-20',
-      totalPriceGlobal:0
+      reservationDateGlobal: '2022-05-20',
+      totalPriceGlobal: 0
     };
 
     this.handleFindAll = this.handleFindAll.bind(this);
     this.handleCreate = this.handleCreate.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
-    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
-
+    // this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.onButtonDelete = this.onButtonDelete.bind(this);
   }
 
 
   componentDidMount() {
-    this.handleFindAll();    
+    this.handleFindAll();
   }
 
 
@@ -37,7 +37,7 @@ export default class App extends Component {
     try {
       const response = await reservations.get('/');
       this.setState({
-        arrayValue: response.data,        
+        arrayValue: response.data,
       });
 
     } catch (error) {
@@ -46,24 +46,39 @@ export default class App extends Component {
   }
 
 
-  async handleCreate() {
-    
+  async handleDelete(id) {
     try {
-      const {clientGlogal, roomGlobal, daysGlobal, reservationDateGlobal, totalPriceGlobal}= this.state;
-      console.log(clientGlogal, roomGlobal);
+      await reservations.delete(`/${id}`);
+      this.handleFindAll();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+
+  onButtonDelete = (id) => {
+    this.handleDelete(id);
+  }
+
+  async handleCreate() {
+
+    try {
+      const { clientGlogal, roomGlobal, daysGlobal, reservationDateGlobal, totalPriceGlobal } = this.state;
+
       await reservations.post('/',
-      {
-      
-        
-          client:clientGlogal, 
-          room:roomGlobal,
-          days:daysGlobal,
-          reservation:reservationDateGlobal,
-          totalPrice:totalPriceGlobal
-        
+        {
+
+
+          client: clientGlogal,
+          room: roomGlobal,
+          days: daysGlobal,
+          reservation: reservationDateGlobal,
+          totalPrice: totalPriceGlobal
+
         });
 
-       this.handleFindAll();
+      this.handleFindAll();
 
     } catch (error) {
       console.log("Erro Gerado:", error);
@@ -79,9 +94,8 @@ export default class App extends Component {
   }
 
   onSaveButtonClick = () => {
-     this.handleCreate();    
+    this.handleCreate();
   }
-
 
 
   render() {
@@ -90,17 +104,19 @@ export default class App extends Component {
     return (
       <>
         <Header />
-      <ContainerMain>
-      <FormInputsReserve
-                 onInputChange={ this.onInputChange }
-                 onSaveButtonClick={ this.onSaveButtonClick }
-                { ...this.state }
-              />
-        
-         <ListReserve
-         arrayProps={arrayValue}
-         />
-      </ContainerMain>
+        <ContainerMain>
+          <FormInputsReserve
+            onInputChange={this.onInputChange}
+            onSaveButtonClick={this.onSaveButtonClick}
+
+            {...this.state}
+          />
+
+          <ListReserve
+            arrayProps={arrayValue}
+            onButtonDelete={this.onButtonDelete}
+          />
+        </ContainerMain>
         <Fotter />
       </>
     )

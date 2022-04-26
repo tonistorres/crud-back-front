@@ -26,8 +26,8 @@ export const ContainerNavBar = styled.section`
 `;
 
 export const ContainerLista = styled.section`
-  /* 1º Intervalo de configuração WDTH */
-  @media screen and (max-width: 2300px) and (min-width: 1540px) {
+
+  @media screen and (max-width: 2300px) and (min-width: 1px) {
     align-items: center;
     background-color: #509FA9;
     color: #f5f5f5;
@@ -52,45 +52,12 @@ export const ContainerLista = styled.section`
     }
   }
   
-  @media screen and (max-width: 1539px) and (min-width: 1345px) {
-    
-    display: none;
-    
-    }
-  
-    @media screen and (max-width: 1344px) and (min-width: 1px) {
-      align-items: center;
-    background-color: #509FA9;
-    color: #f5f5f5;
-    font-size: 28px;
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    margin-left: 1%;
-    margin-right: 1%;
-    border-radius: 15px;
-    a:link,
-    a:visited {
-      text-decoration: none;
-      color:#f5f5f5 ;
-    }
-    a:hover {
-      background-color:#fff ;
-      border-radius:2px 55px 2px ;
-      /* text-decoration: underline; */
-      padding:10px 10px;
-      color: #509FA9;
-    }
-    a:active {
-      text-decoration: none;
-    }
-    
-    }
+
   
 `;
 
 export const ContainerLogo = styled.section`
-  @media screen and (max-width: 2300px) and (min-width: 1345px) {
+  @media screen and (max-width: 2300px) and (min-width: 1px) {
     align-items: center;
     background-color: #f5f5f5;
     color: #777;
@@ -105,7 +72,5 @@ export const ContainerLogo = styled.section`
     }
   }
 
-  @media screen and (max-width: 1344px) and (min-width: 1px) {
-    display:none;
-  }
+
 `;

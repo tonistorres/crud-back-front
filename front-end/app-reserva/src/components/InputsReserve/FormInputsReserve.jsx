@@ -11,6 +11,7 @@ export default class FormReserve extends Component {
       totalPriceGlobal,
        onInputChange,
        onSaveButtonClick,
+       
     } = this.props;
 
     return (
