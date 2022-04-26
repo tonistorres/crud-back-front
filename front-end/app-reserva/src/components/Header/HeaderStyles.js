@@ -29,27 +29,16 @@ export const ContainerLista = styled.section`
 
   @media screen and (max-width: 2300px) and (min-width: 1px) {
     align-items: center;
-    background-color: #509FA9;
+    background-color: #2379BD;
     color: #f5f5f5;
-    font-size: 28px;
+    font-size: 30px;
+    font-weight:400;
     display: flex;
     justify-content: space-around;
+    letter-spacing:0.5rem;
+    height:6vh ;
     width: 48%;
-    margin-left: 1%;
-    margin-right: 1%;
     border-radius: 15px;
-    a:link,
-    a:visited {
-      text-decoration: none;
-      color:#f5f5f5 ;
-    }
-    a:hover {
-      text-decoration: underline;
-      color: #f00;
-    }
-    a:active {
-      text-decoration: none;
-    }
   }
   
 

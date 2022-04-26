@@ -9,13 +9,7 @@ export default class Header extends Component {
             <>
                 <ContainerMain>
                     <ContainerNavBar>
-                        {/* <ContainerLista>
-                            <Link to="/">Home</Link>
-                            <Link to="/about">About</Link>
-                            <Link to="/skill">Skills</Link>
-                            <Link to="/project">Projects</Link>
-                            <Link to="/contact">Contact</Link>                            
-                        </ContainerLista> */}
+                         <ContainerLista><span> App Reserve - SNAIL HOTEL </span></ContainerLista> 
                         <ContainerLogo>
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" />

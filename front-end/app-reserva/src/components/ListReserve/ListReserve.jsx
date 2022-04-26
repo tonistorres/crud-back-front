@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Redirect } from "react-router";
+
 import {
     ContainerMap,
-    TitleMap,
-    ContainerManList
+    ContainerManList,
+    Button
 } from './ListReserveStyles';
 
 import {
@@ -15,10 +17,32 @@ import {
     TabletdDias,
     TableDataRoom,
     TableBody,
-    TableThId
+    TableThId,
+    TableTrData,
+    TableThDias,
+    TableThClient,
+    TableThRoom,
+    TableThPreco
 } from './Tabela';
 
 export default class ListReserve extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+        redirect: false,
+        loading: true
+    }
+    this.handleState = this.handleState.bind(this);
+}
+
+handleState() {
+  this.setState({
+      redirect: true,
+      loading: false
+  })
+}
+
     render() {
         const { arrayProps, onButtonDelete } = this.props;
         return (
@@ -26,44 +50,43 @@ export default class ListReserve extends Component {
                 {
                     // https://www.youtube.com/watch?v=rF6guBbfTl0
 
-                    arrayProps.length ? (
-                        // <ContainerMap>
+                    // arrayProps.length ? (
+                        <ContainerMap>
                         <Table>
                             <TableHead>
-                                <tr>
-                                    <TableThId>id</TableThId>
-                                    <th>Cliente</th>
-                                    <th>Dias</th>
-                                    <th>Quarto</th>
-                                    <th>Preço R$</th>
+                                <TableTrData>
+                                    <TableThId>ID</TableThId>
+                                    <TableThClient>CLIENTE</TableThClient>
+                                    <TableThDias>DIAS</TableThDias>
+                                    <TableThRoom>QUARTO</TableThRoom>
+                                    <TableThPreco>PRECO R$</TableThPreco>
 
 
-                                </tr>
+                                </TableTrData>
                             </TableHead>
                             {
                                 // https://www.w3schools.com/html/html_tables.asp
                                 arrayProps.map(({ id, client, days, room, totalPrice }, index) => (
                                     <TableBody>
-                                        <tr key={index + 1}>
+                                        <TableTrData key={index + 1}>
                                             <TabletdId>{id}</TabletdId>
                                             <TableDataClient>{client}</TableDataClient>
                                             <TabletdDias>{days}</TabletdDias>
                                             <TableDataRoom>{room}</TableDataRoom>
                                             <TabletdPreco>{totalPrice}</TabletdPreco>
-                                            <TabletdButton>  <button onClick={() => onButtonDelete(id)}>🗑️</button></TabletdButton>
-                                        </tr>
+                                            <TabletdButton>  <Button onClick={() => onButtonDelete(id)}>Excluir</Button></TabletdButton>
+                                        </TableTrData>
                                     </TableBody>
                                 ))
                             }
                         </Table>
-                        //  </ContainerMap>
-                    ) : (
-                        <ContainerMap>
-                            <TitleMap>Sem Repositories</TitleMap>
-                            <h1> Pagina NOT FOUND</h1>
-                        </ContainerMap>
+                          </ContainerMap>
+                    // ) : (
+                    //     <ContainerMap>
+                    //       <Redirect to="/notfound"/>
+                    //     </ContainerMap>
 
-                    )
+                    // )
                 }
 
             </ContainerManList>

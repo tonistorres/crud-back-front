@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 export const ContainerManList = styled.div`
   @media screen and (max-width: 2300px) and (min-width: 1px) {
-  /* background-color:yellow; */
   display: flex;
   justify-content:center ;
   height:80% ;
@@ -18,13 +17,30 @@ export const ContainerMap = styled.div`
   display: flex;
   height:100%;
   justify-content:center ;
-  overflow-x: auto;
   width:100%;
+  overflow:auto ; 
+  /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2379BD;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #999;
+  
+}
 
 }
-   
-
-
 `;
 
 export const TitleMap = styled.h3`
@@ -32,4 +48,15 @@ export const TitleMap = styled.h3`
   color: #555;
   display: flex;
   justify-content: center;
+`;
+
+export const Button = styled.h3`
+  align-items:center;
+  border-radius:12px;
+  background: #2379BD;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  height:100% ;
+  width:100% ;
 `;
