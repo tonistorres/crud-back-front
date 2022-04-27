@@ -7,14 +7,12 @@ export const Table = styled.table`
     border-spacing: 0;
     border-collapse: collapse;
     
-
     `;
 
 export const TableHead = styled.thead`
     font-size: 18px;
     font-weight: bold;
     text-align: left;
-    padding 2;
     
     `;
 
@@ -68,12 +66,10 @@ text-align: center;
 height:50px ;
 vertical-align: middle;
 width:1.5%;
-
 `;
 
 
 export const TableThId = styled.th`
-
 background:#F5F5F5;
 border: 1px solid #333;
 height:50px;
@@ -81,7 +77,6 @@ text-align: center;
 margin-top:50px ;
 vertical-align: middle;
 width:1.5%;
-
 `;
 
 
@@ -95,7 +90,6 @@ border: 1px solid #333;
 text-align: center;
 vertical-align: middle;
 width:3%;
-
 `;
 
 
@@ -105,12 +99,10 @@ border: 1px solid #333;
 text-align: center;
 vertical-align: middle;
 width:3%;
-
 `;
 
 
 export const TabletdPreco = styled.td`
-
 font-size: 3vh;
 /* color: LightGrey; */
 background:#F5F5F5;
@@ -119,7 +111,6 @@ text-align: center;
 height:50px ;
 vertical-align: middle;
 width:3%;
-
 `;
 
 
@@ -130,20 +121,13 @@ text-align: center;
 vertical-align: middle;
 height:50px ;
 width:3%;
-
 `;
 
 export const TabletdButton = styled.td`
-
 font-size: 3vh;
 background:#F5F5F5;
 text-align: center;
 vertical-align: middle;
 height:50px ;
 width:3%;
-
-`;
-
-export const TableTrData = styled.tr` 
-
 `;

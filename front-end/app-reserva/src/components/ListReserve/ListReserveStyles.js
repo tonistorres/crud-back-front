@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const ContainerManList = styled.div`
   @media screen and (max-width: 2300px) and (min-width: 1px) {
   display: flex;
+  flex-direction: column;
   justify-content:center ;
   height:80% ;
   width:100% ;
@@ -41,13 +42,6 @@ export const ContainerMap = styled.div`
 }
 
 }
-`;
-
-export const TitleMap = styled.h3`
-  background: rgba(255, 255, 255, 0.95);
-  color: #555;
-  display: flex;
-  justify-content: center;
 `;
 
 export const Button = styled.h3`

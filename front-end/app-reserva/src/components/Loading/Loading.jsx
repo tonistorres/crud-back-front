@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
 import { Route, Switch } from "react-router";
 import image from './loading.gif'
-import Home from '../../pages/Home';
-import Header from '../Header/Header';
-import Fotter from '../Fotter/Fotter';
-import {ContainerMain} from './LoadingStyles.js';
-
-
+import Home from '../../pages/Home.jsx';
+import Header from '../Header/Header.jsx';
+import Fotter from '../Fotter/Fotter.jsx';
+import { ContainerMain } from './LoadingStyles.js';
 
 export default class Loading extends Component {
  
   constructor() {
     super();
+ 
     this.state = {
         redirect: false,      
     }
@@ -27,12 +26,13 @@ handleState() {
   render() {
     const { redirect } = this.state;
 
-    setTimeout(this.handleState, 5000);
+    setTimeout(this.handleState, 3000);
+    
          if (redirect) {
             return (
                 <>
                     <Switch>
-                        <Route path="/" component={Home} />
+                        <Route path="/home" component={Home} />
                     </Switch>
                 </>
             )

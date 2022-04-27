@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import Header from '../components/Header/Header';
 import Fotter from '../components/Fotter/Fotter.jsx';
-import reservations from "../service/connection-back";
-import FormInputsReserve from '../components/InputsReserve/FormInputsReserve.jsx';
+import FormInputsReserve from '../components/InputsReserve/FormInputsReserve.jsx'
 import ListReserve from '../components/ListReserve/ListReserve.jsx';
-import { ContainerMain } from '../AppStyle';
-import Loading from '../components/Loading/Loading.jsx';
-import NotFound from '../components/NotFound/NotFound.jsx';
-
+import reservations from "../service/connection-back";
+import { ContainerManList} from '../components/ListReserve/ListReserveStyles';
 
 export default class Home extends Component {
     constructor(props) {
@@ -49,9 +46,8 @@ export default class Home extends Component {
       async handleFindAll() {
         try {
           const response = await reservations.get('/');
-          console.log('response:',response.data);  
+        //   console.log('response:',response.data);  
           
-
           this.setState({
             arrayValue: response.data,
           });
@@ -93,8 +89,7 @@ export default class Home extends Component {
               room: roomGlobal,
               days: daysGlobal,
               reservation: reservationDateGlobal,
-              totalPrice: totalPriceGlobal
-    
+              totalPrice: totalPriceGlobal    
             });
     
           this.handleFindAll();
@@ -117,31 +112,24 @@ export default class Home extends Component {
       }
     
     
-      render() {
-        
-        const { arrayValue, load, redirect } = this.state;
-        if (load) return <Loading />
-        if(redirect){
-           return <NotFound />           
-        }
+    render() {
+        const { arrayValue } = this.state;
+        // console.log('response:',arrayValue);  
         return (
-          <>
-            <Header />
-            <ContainerMain>
-              <FormInputsReserve
+            <ContainerManList>
+              <Header/>
+               <FormInputsReserve
                 onInputChange={this.onInputChange}
-                onSaveButtonClick={this.onSaveButtonClick}
-    
+                onSaveButtonClick={this.onSaveButtonClick}    
                 {...this.state}
               />
-    
+
               <ListReserve
                 arrayProps={arrayValue}
                 onButtonDelete={this.onButtonDelete}
-              />
-            </ContainerMain>
+              />  
             <Fotter />
-          </>
+            </ContainerManList>
         )
-      }
     }
+}
