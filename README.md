@@ -16,7 +16,7 @@
 > [Fonte de Informação: Blog byTrybe ](https://blog.betrybe.com/tecnologia/crud-operacoes-basicas/);
 
 
-### 1 - Setup inicial da aplicação:
+### 1 - Setup inicial da aplicação(Back-End):
 
 - [x] Criando uma Pastas crud-back-front;
 
@@ -238,10 +238,32 @@ git tag -a "nome_tag" -m"" id
      |---------> |public|
      |
      |---------> |src| 
-
+                   |
+                   |------------->|components|   
+                   |                   |
+                   |                   |--------->|Fotter|
+                   |                   |
+                   |                   |--------->|Header|
+                   |                   |
+                   |                   |--------->|InputsReserve|
+                   |                   |
+                   |                   |---------->|ListReserve|
+                   |                   |
+                   |                   |---------->|Loading|
+                   |                   |
+                   |                   |---------->|NotFound| 
+                   |
+                   |--------------->|pages|
+                   |                   |
+                   |                   |------->|Home| 
+                   |
+                   |
+                   |-------------->|service|                                 
 ```         
 
-### 6 - Configurando ambiente do Front-End:
+![Docker Node](./frontRedme.png)
+
+### 6 - Setup inicial ambiente do Front-End:
 
 - [x] Criando uma Pasta front-end;
 
@@ -260,8 +282,115 @@ cd front-end
 ```console
 npx create-react-app app-reservas
 ```
+
+### 6.1 - Ferramentas e pacotes que utilizaremos no desenvolvimento da aplicação(Front-End):
+
+
+- [x] - axios: ^0.26.1 ;
+  
+```console
+ npm install -D nodemon;
+```
+
+- [Link Pacote axios ](https://www.npmjs.com/package/axios)
+
+
+- [x] - bootstrap: ^5.1.3;
+  
+```console
+ npm i bootstrap
+```
+
+- [Link Pacote bootstrap ](https://www.npmjs.com/package/bootstrap)
+
+
+
+- [x] - bootstrap: ^5.1.3;
+  
+```console
+ npm i bootstrap
+```
+
+- [Link Pacote bootstrap ](https://www.npmjs.com/package/bootstrap)
+
+
+- [x] - react: ^18.0.0;
+  
+```console
+ npm i react
+```
+
+- [Link Pacote react ](https://www.npmjs.com/package/react)
+
+
+- [x] - react-router-dom: ^5.3.1;
+  
+```console
+ npm i react-router-dom
+```
+
+- [Link Pacote react-router-dom ](https://www.npmjs.com/package/react-router-dom)
+
+
+- [x] - styled-components: ^5.3.5;
+  
+```console
+ npm i styled-components
+```    
+
+- [Link Pacote styled-components ](https://www.npmjs.com/package/styled-components)
+    
+
+### 6.2 - Resumo: Comentário de pastas e arquivos do projeto:
+
+##### 6.2.1 - front-end/app-reserva:
+
+> Essa pasta é a principal pasta do projeto, onde irá conter a estrutura de sub pastas filhas, como: Fotter, Header, InputsReserve etc.
+
+##### 6.2.2 - front-end/app-reserva/src/components:
+
+> Toda parte componentizada da aplicação irá ficar disposta nessa pasta.
+
+##### 6.2.2.1 - front-end/app-reserva/src/components/Header: 
+
+> Cotém todos os arquivos js e jsx responsável pela rederização do Cabeçalho da aplicação. 
+
+##### 6.2.2.2 - front-end/app-reserva/src/components/Fotter: 
+
+> Cotém todos os arquivos js e jsx responsável pela rederização do Rodapé da aplicação. 
+
+##### 6.2.2.3 - front-end/app-reserva/src/components/InputsReserve: 
+
+> Cotém todos os arquivos js e jsx responsável pela rederização do Formulário da aplicação. 
+
+##### 6.2.2.4 - front-end/app-reserva/src/components/ListReserve: 
+
+> Cotém todos os arquivos js, jsx, gif,css responsável pela rederização da tabela na aplicação. 
+
+
+##### 6.2.2.5 - front-end/app-reserva/src/components/NotFound: 
+
+> Cotém todos os arquivos js, jsx, gif,css responsável pela rederização da pagina de erro aplicação. 
+
+
+##### 6.2.2.6 - front-end/app-reserva/src/components/Loading: 
+
+> Cotém todos os arquivos js, jsx e gif responsável pela rederização do carregamento inicial (apresentação) da aplicação. 
+
+##### 6.2.3 - front-end/app-reserva/src/pages:
+
+> Toda parte pagina da aplicação irá ficar disposta nessa pasta.
+
+
+##### 6.2.3.1 - front-end/app-reserva/src/pages/Home: 
+
+> Pagina principal da aplicação, tem por uma das suas responsabilidades agregar todos os componentes em sua estrutura bem como agregar o estado global dos componentes filhos.
+
+##### 6.2.4 - front-end/app-reserva/src/service:
+
+> Toda parte de servir à aplicação irá ficar disposta nessa pasta.
+
 ![Docker Node](./dockerNode.jpeg)
-![Docker Mysql](./dockerMysql.png)
 
 ### 7 - Dockerizando aplicação:
 
