@@ -4,7 +4,7 @@ import FormInputsReserve from '../components/InputsReserve/FormInputsReserve.jsx
 import ListReserve from '../components/ListReserve/ListReserve.jsx';
 import reservations from "../service/connection-back";
 import { ContainerManList} from '../components/ListReserve/ListReserveStyles';
-
+import MyContext from '../components/MyContext/MyContext';
 
 export default class Home extends Component {
     constructor(props) {
@@ -103,11 +103,22 @@ export default class Home extends Component {
     
     
     render() {
-        const { arrayValue } = this.state;
+    const { arrayValue } = this.state;
+    const valueDefault ={
+      arrayValue:this.state.arrayValue,
+      onInputChange:this.onInputChange,
+      onSaveButtonClick:this.onSaveButtonClick,
+      onButtonDelete:this.onButtonDelete,
+      typedText:this.state.typedText,
+      handleUpdateStatus:this.handleUpdateStatus,
+
+      
+    }
     
         return (
             <ContainerManList>
               <Header/>
+              <MyContext.Provider value={ valueDefault }>
                <FormInputsReserve
                 onInputChange={this.onInputChange}
                 onSaveButtonClick={this.onSaveButtonClick}    
@@ -121,7 +132,7 @@ export default class Home extends Component {
                 typedText={this.state.typedText}
                 
               />  
-
+            </MyContext.Provider>
             </ContainerManList>
         )
     }

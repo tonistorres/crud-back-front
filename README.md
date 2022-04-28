@@ -531,14 +531,18 @@ development:{
 };
 
 ```
-##### 8.2.3.3 - Criando a model e a migration da tabela reservation:
+##### 8.2.3.3 - Criando a model e a migration das tabelas reservation e login:
 
 > Para criarmos a  model e a migration utilizando o sequelize-cli de forma automatica, utilizaremos o seguinte comando abaixo:
 
 ```console
-npx sequelize-cli model:generate --nam Reservation --attributes client:string,room:string,days:integer,reservationDate:date,totalPrice:integer
+npx sequelize-cli model:generate --name Reservation --attributes client:string,room:string,days:integer,reservationDate:date,totalPrice:integer
 ```
-##### 8.2.4 - Criando a table reservation no DB MYSQ dentro de um container DOCKER:
+
+```console
+ npx sequelize-cli model:generate --name Login --attributes user:string,email:string,password:string,address:string,city:string
+```
+##### 8.2.4 - Criando a table reservation e Login no DB MYSQ dentro de um container DOCKER:
 
 > Comando de manipulação da estrutura do banco de dados, serão executado dentro do docker devido as variáveis de ambiente do banco que estão vinculadas dentro do container docker, conforme explicitado no docker-compose .
 
@@ -555,6 +559,34 @@ npx sequelize-cli db:create
 ```
 
 - [x] - Vamos criar a tabela Reservations no banco de dados rodando 20220423152943-create-reservation.js;
+
+```console
+npx sequelize-cli db:migrate
+```
+
+- [x] - Modificando o escopo de reservation.js de classe para função;
+
+```javascript
+
+module.exports = (sequelize, DataTypes) => {
+
+  const Reservation = sequelize.define('Reservation', {
+    client: DataTypes.STRING,
+    room: DataTypes.STRING,
+    days: DataTypes.INTEGER,
+    reservationDate: DataTypes.DATE,
+    totalPrice: DataTypes.INTEGER
+
+});
+
+return Reservation;
+
+}
+
+```
+
+
+- [x] - Vamos criar a tabela Logins no banco de dados rodando 20220428175057-create-login;
 
 ```console
 npx sequelize-cli db:migrate
