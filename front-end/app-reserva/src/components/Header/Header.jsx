@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom';
 import { ContainerMain, ContainerLogo, ContainerNavBar, ContainerLista } from './HeaderStyles';
 
-// shttps://v5.reactrouter.com/web/api/Switch
 export default class Header extends Component {
     render() {
         return (
             <>
                 <ContainerMain>
                     <ContainerNavBar>
-                         <ContainerLista><span> App Reserve - SNAIL HOTEL </span></ContainerLista> 
+                         <ContainerLista><strong> App Reserve - SNAIL HOTEL </strong></ContainerLista> 
                         <ContainerLogo>
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" />

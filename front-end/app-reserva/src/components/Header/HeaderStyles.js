@@ -27,7 +27,7 @@ export const ContainerNavBar = styled.section`
 
 export const ContainerLista = styled.section`
 
-  @media screen and (max-width: 2300px) and (min-width: 1px) {
+  @media screen and (max-width: 2300px) and (min-width: 1900px) {
     align-items: center;
     background-color: #2379BD;
     color: #f5f5f5;
@@ -41,6 +41,10 @@ export const ContainerLista = styled.section`
     border-radius: 15px;
   }
   
+
+  @media screen and (max-width: 1899px) and (min-width: 1px) {
+   display: none;
+  }
 
   
 `;

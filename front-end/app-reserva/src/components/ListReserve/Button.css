@@ -1,0 +1,11 @@
+.btn-style-one{
+ background-color: #2379BD;       
+ border-radius: 12px;
+ color: whitesmoke;
+ height: 5vh;
+ width: 50%;
+}
+
+.width-tr {
+  width: 5%;  
+}

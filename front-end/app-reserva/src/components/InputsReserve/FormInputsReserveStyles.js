@@ -9,7 +9,7 @@ export const FormContainerInputs = styled.div`
   font-weight:700;
   color:#E9E9E9;
   
-  height:10vh;
+  height:13vh;
   margin-top:4%;
   justify-content:space-around;
   width:100% ;
