@@ -4,17 +4,6 @@ import { FormContainerInputs, InpuText, InpuNumber, InputDate, Button } from './
 export default class FormReserve extends Component {
 
   render() {
-    const {
-      clientGlogal,
-      roomGlobal,
-      daysGlobal,
-      reservationDateGlobal,
-      totalPriceGlobal,
-      // onInputChange,
-      onSaveButtonClick,
-
-    } = this.props;
-
     return (
       <MyContext.Consumer>
         {
@@ -27,7 +16,7 @@ export default class FormReserve extends Component {
                   <InpuText
                     type="text"
                     name="clientGlogal"
-                    value={clientGlogal}
+                    value={value.clientGlogal}
                     onChange={value.onInputChange}
                   />
                 </label>
@@ -36,7 +25,7 @@ export default class FormReserve extends Component {
                   <InpuText
                     type="text"
                     name="roomGlobal"
-                    value={roomGlobal}
+                    value={value.roomGlobal}
                     onChange={value.onInputChange}
                   />
                 </label>
@@ -44,7 +33,7 @@ export default class FormReserve extends Component {
                   Days:
                   <InpuNumber
                     name="daysGlobal"
-                    value={daysGlobal}
+                    value={value.daysGlobal}
                     onChange={value.onInputChange}
                     type="number"
                   />
@@ -53,7 +42,7 @@ export default class FormReserve extends Component {
                   Date Reserve:
                   <InputDate
                     name="reservationDateGlobal"
-                    value={reservationDateGlobal}
+                    value={value.reservationDateGlobal}
                     onChange={value.onInputChange}
                     type="date"
                   />
@@ -62,7 +51,7 @@ export default class FormReserve extends Component {
                   Total Price:
                   <InpuNumber
                     name="totalPriceGlobal"
-                    value={totalPriceGlobal}
+                    value={value.totalPriceGlobal}
                     onChange={value.onInputChange}
                     type="number"
                   />
@@ -70,7 +59,7 @@ export default class FormReserve extends Component {
 
                 <Button
                   type="reset"
-                  onClick={onSaveButtonClick}
+                  onClick={value.onSaveButtonClick}
                 >
                   Salvar
                 </Button>

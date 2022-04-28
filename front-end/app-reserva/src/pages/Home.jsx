@@ -104,15 +104,19 @@ export default class Home extends Component {
     
     render() {
     const { arrayValue } = this.state;
+
     const valueDefault ={
+      clientGlogal:this.state.clientGlogal,
+      roomGlobal:this.state.roomGlobal,
+      daysGlobal:this.state.daysGlobal,
+      reservationDateGlobal:this.state.reservationDateGlobal,
+      totalPriceGlobal:this.state.totalPriceGlobal,
       arrayValue:this.state.arrayValue,
       onInputChange:this.onInputChange,
       onSaveButtonClick:this.onSaveButtonClick,
       onButtonDelete:this.onButtonDelete,
       typedText:this.state.typedText,
-      handleUpdateStatus:this.handleUpdateStatus,
-
-      
+      handleUpdateStatus:this.handleUpdateStatus,      
     }
     
         return (
