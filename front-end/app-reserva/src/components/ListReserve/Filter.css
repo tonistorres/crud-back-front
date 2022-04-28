@@ -1,0 +1,41 @@
+.App-container-input{
+  /* border: 1px solid black; */
+  align-items: start;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 2%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  width: 62%;
+  
+  }
+
+  span {
+    margin-left: 4%;
+    color: #333;
+    font-size:18px;
+    font-weight: 800;
+  }
+
+
+
+.App-style-search{
+  background-color:#FFFFFF;
+  border-radius: 12px;
+  border: 2px solid #333;
+  font-size: 25px;
+  color: #333;
+  height: 40px;
+  padding: 15px 15px 15px 15px;
+  width: 455px;
+  
+}
+.filter-tecnology{
+  align-items: center;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+}
