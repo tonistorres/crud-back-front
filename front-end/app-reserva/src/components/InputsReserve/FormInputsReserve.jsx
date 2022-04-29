@@ -8,8 +8,7 @@ export default class FormReserve extends Component {
       <MyContext.Consumer>
         {
           value => (
-
-            <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit}>
               <FormContainerInputs>
                 <label htmlFor="name">
                   Cliente:

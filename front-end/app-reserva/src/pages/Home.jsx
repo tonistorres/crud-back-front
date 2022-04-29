@@ -105,6 +105,7 @@ export default class Home extends Component {
     render() {
     const { arrayValue } = this.state;
 
+    // https://pt-br.reactjs.org/docs/context.html
     const valueDefault ={
       clientGlogal:this.state.clientGlogal,
       roomGlobal:this.state.roomGlobal,
@@ -123,11 +124,7 @@ export default class Home extends Component {
             <ContainerManList>
               <Header/>
               <MyContext.Provider value={ valueDefault }>
-               <FormInputsReserve
-                onInputChange={this.onInputChange}
-                onSaveButtonClick={this.onSaveButtonClick}    
-                {...this.state}
-              />
+               <FormInputsReserve />
 
               <ListReserve
                 arrayProps={arrayValue}

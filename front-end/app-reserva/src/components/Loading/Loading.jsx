@@ -32,7 +32,7 @@ render() {
 
   const { redirect } = this.state;
 
-  if(redirect) return <Redirect to="/home" />
+  if(redirect) return <Redirect to="/login" />
     
     return (
       <>
