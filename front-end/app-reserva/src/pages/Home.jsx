@@ -5,6 +5,9 @@ import ListReserve from '../components/ListReserve/ListReserve.jsx';
 import { apiConnectionReservation } from "../service/connection-back";
 import { ContainerManList } from '../components/ListReserve/ListReserveStyles';
 import MyContext from '../components/MyContext/MyContext';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+
 
 export default class Home extends Component {
   constructor(props) {
@@ -51,7 +54,7 @@ export default class Home extends Component {
       this.setState({
         arrayValue: response.data,
       });
-
+      toast.success('Sucess Authentication');
     } catch (error) {
       console.log("Erro Gerado:", error);
     }
@@ -138,6 +141,7 @@ export default class Home extends Component {
 
           />
         </MyContext.Provider>
+        <ToastContainer />
       </ContainerManList>
     )
   }

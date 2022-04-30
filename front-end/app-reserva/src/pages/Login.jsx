@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from '../components/Header/Header';
 import { apiAuthentication } from "../service/connection-back";
 import Fotter from '../components/Fotter/Fotter';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 import './css/Login.css';
 
 
@@ -13,14 +14,18 @@ export default class Login extends Component {
 
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      messageAuthentication: 0,
+
     }
 
     this.handleClick = this.handleClick.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
-
   }
+
+
+
 
   onInputChange({ target }) {
     const { name } = target;
@@ -38,16 +43,22 @@ export default class Login extends Component {
   async handleAuthentication() {
     try {
       const { email, password } = this.state;
-      const token = await apiAuthentication.post('/',
-        {
-          email: email,
-          password: password,
-        });
-     
-        await window.localStorage.setItem("token",JSON.stringify(token.data))  
-        console.log(token);
+      if (email.length && password.length) {
+        const token = await apiAuthentication.post('/',
+          {
+            email: email,
+            password: password,
+          });
 
-      this.handleClick();
+        if (token) {
+          await window.localStorage.setItem("token", JSON.stringify(token.data))
+          this.handleClick();
+        }
+
+      } else {
+        toast.error('Fail Authentication')
+      }
+
     } catch (error) {
       console.log("Erro Gerado:", error);
     }
@@ -56,70 +67,77 @@ export default class Login extends Component {
 
   render() {
     const { email, password } = this.state;
+
     return (
-      <div class="col-12">
+      <div className="col-12">
         <Header />
-        <form class="col-3" >
+        <form className="col-3" >
 
-          <p class="text-justify custom-text-large custom-container-element-center">Login</p>
+          <p className="text-justify custom-text-large custom-container-element-center">Login</p>
 
-          <div class="input-group mb-3 custom-container-element-center">
+          <div className="input-group mb-3 custom-container-element-center">
 
-            <div class="input-group-prepend">
-              <span class="input-group-text custon-label-css" id="inputGroup-sizing-default">Email</span>
+            <div className="input-group-prepend">
+              <span className="input-group-text custon-label-css" id="inputGroup-sizing-default">Email</span>
             </div>
             <input type="email"
-              class="form-control custon-password-css"
+              className="form-control custon-password-css"
               aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-default"
               name="email"
               value={email}
               onChange={this.onInputChange}
+              placeholder="example@xmail.com"
             />
           </div>
 
 
-          <div class="input-group mb-3 custom-container-element-center">
-            <div class="input-group-prepend">
-              <span class="input-group-text custon-label-css" id="inputGroup-sizing-default">Senha</span>
+          <div className="input-group mb-3 custom-container-element-center">
+            <div className="input-group-prepend">
+              <span className="input-group-text custon-label-css" id="inputGroup-sizing-default">Password</span>
             </div>
             <input
               type="password"
-              class="form-control custon-password-css"
+              className="form-control custon-password-css"
               aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-default"
               name="password"
               value={password}
               onChange={this.onInputChange}
+              placeholder="ExAmplE_Xablau"
             />
           </div>
 
 
-          <div class="input-group mb-3 custom-container-element-center">
-            <div class="input-group-prepend">
+          <div className="input-group mb-3 custom-container-element-center">
+            <div className="input-group-prepend">
               <button
                 type="button"
-                class="btn btn-primary btn-lg custom-button"
+                className="btn btn-primary btn-lg custom-button"
                 onClick={this.handleAuthentication}
-                >
+              >
                 Connect System
               </button>
             </div>
           </div>
 
 
-          <div class="input-group mb-3 custom-container-element-center">
-            <div class="input-group-prepend">
+          <div className="input-group mb-3 custom-container-element-center">
+            <div className="input-group-prepend">
               <button
                 type="button"
-                class="btn btn-primary btn-lg custom-button"
+                className="btn btn-primary btn-lg custom-button"
                 onClick={this.handleClick}>
                 Create Account
               </button>
             </div>
           </div>
 
-
+          <div className="input-group mb-3 custom-container-element-center">
+            <div className="input-group-prepend">
+              <ToastContainer />
+            </div>
+          </div>
         </form>
         <Fotter />
       </div>

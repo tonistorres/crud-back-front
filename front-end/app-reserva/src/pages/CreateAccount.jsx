@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import { apiConnectionLogin } from "../service/connection-back";
 import Header from '../components/Header/Header';
 import Fotter from '../components/Fotter/Fotter';
