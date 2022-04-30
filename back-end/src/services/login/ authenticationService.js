@@ -4,13 +4,12 @@ const { Login } = require('../../database/models');
 
 const authenticationService = async (user) => {
   try {
-    console.log(user.email);
      const SECRET = 'xablau'; 
      const jwtConfig = {
      expiresIn: '1m',
      algorithm: 'HS256',
      }
-     const resultSearch = await Login.findOne({ where: { email:user.email }});
+     const resultSearch = await Login.findOne({ where: { email:user.email, password:user.password }});
       console.log(resultSearch);  
      if(!resultSearch){
        return {

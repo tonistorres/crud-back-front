@@ -21,7 +21,8 @@ export default class Home extends Component {
       totalPriceGlobal: 0,
       load: false,
       redirect: false,
-      typedText: ''
+      typedText: '',
+      tokenState:''
     };
 
     this.handleFindAll = this.handleFindAll.bind(this);
@@ -31,11 +32,18 @@ export default class Home extends Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.onButtonDelete = this.onButtonDelete.bind(this);
     this.handleUpdateStatus = this.handleUpdateStatus.bind(this);
+    this.handleTokenLocalStorage = this.handleTokenLocalStorage.bind(this);
   }
 
   componentDidMount() {
     this.handleFindAll();
+    this.handleTokenLocalStorage();
   }
+
+handleTokenLocalStorage(){
+  var tokenLocalStorage =JSON.parse( localStorage.getItem("token"));
+  this.setState({tokenState:tokenLocalStorage})
+}
 
   handleUpdateStatus(evt) {
     this.setState({
@@ -110,7 +118,7 @@ export default class Home extends Component {
 
 
   render() {
-    const { arrayValue } = this.state;
+    const { arrayValue,tokenState } = this.state;
 
     // https://pt-br.reactjs.org/docs/context.html
     const valueDefault = {
@@ -125,6 +133,7 @@ export default class Home extends Component {
       onButtonDelete: this.onButtonDelete,
       typedText: this.state.typedText,
       handleUpdateStatus: this.handleUpdateStatus,
+      
     }
 
     return (
@@ -135,6 +144,7 @@ export default class Home extends Component {
 
           <ListReserve
             arrayProps={arrayValue}
+            token={tokenState}
             onButtonDelete={this.onButtonDelete}
             handleUpdateStatus={this.handleUpdateStatus}
             typedText={this.state.typedText}

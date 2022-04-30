@@ -261,7 +261,7 @@ git tag -a "nome_tag" -m"" id
                    |-------------->|service|                                 
 ```         
 
-![Docker Node](./frontRedme.png)
+![Font-End](./frontRedme.png)
 
 ### 6 - Setup inicial ambiente do Front-End:
 
@@ -645,5 +645,48 @@ return Reservation;
                   |--------> |database|
 
 ```
+![Ilustração](./jwt.png)
+
+
+### 9 - JWT:
+
+#### 9.1 - O QUE É JWT ?
+
+> Json Web Token, é um padrão para autenticação e troca de informações, definido pela RFC7519. De forma bastante
+> resumida, consiste em um conjunto de solicitações. O JWT se faz essencial por ser uma forma extremamente segura
+> de compartilhamento de informações e autenticação de usuários. É um formato baseado em texto e amplamente aceito 
+> por diversas linguagens, característica que carrega por utilizar JSON como base.
+
+> Esse é o grande diferencial do JWT em relação a outras opções, pois o JSON é um padrão mais vantajoso de troca e
+> armazenamento de informação. Alguns dos concorrentes são o SWT (Simple Web Tokens) e o SAML (Security Assertion 
+> Markup Language Tokens), que usa o padrão XML.
+
+> O JWT é, na verdade, um dos elementos de uma estrutura ainda maior, o JOSE (Json Object Signing and Encryption). 
+> No JOSE, estão contidas várias outras especificações. São elas: o JWE (Json Web Encryption), responsável pela 
+> criptografia para a assinatura do token; o JWA (Json Web Algorithms), a respeito do algoritmo; JWK (Json Web Keys)
+> , correspondente as chaves para assinatura; JWS (Json Web Signature), a assinatura do token. Por fim, o JWT, 
+> elemento JOSE, é o token em si
+> [Fonte: Blog Trybe ](https://blog.betrybe.com/tecnologia/jwt-json-web-tokens/);
+
+
+### 9.2 - Instalando Pacote JWT:
+
+- [x] - Primeiro iremos instalar o pacote npm jsonwebtoken;
+
+```console 
+npm install jsonwebtoken
+```
+
+- [x] - Instalando dotenv para trabalharmos com vaiáveis de ambiente;
+
+```console 
+npm i dotenv
+```
+
+
+
+
 
 # BOOTSTRAP DOCUMENTAR: https://www.youtube.com/watch?v=90EGEu8tqY8
+
+# Notitify Pacote: https://www.youtube.com/watch?v=gKXGndx1zu8
