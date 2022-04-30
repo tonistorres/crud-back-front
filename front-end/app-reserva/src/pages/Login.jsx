@@ -43,6 +43,21 @@ export default class Login extends Component {
   async handleAuthentication() {
     try {
       const { email, password } = this.state;
+
+      if(!email.length && password.length){
+        toast.info('Null email field!')
+      }
+
+
+      if(email.length && !password.length){
+        toast.info('Null password field!')
+      }
+
+      if(!email.length && !password.length){
+        toast.info('Null password and email fields!')
+      }
+
+
       if (email.length && password.length) {
         const token = await apiAuthentication.post('/',
           {
@@ -55,12 +70,12 @@ export default class Login extends Component {
           this.handleClick();
         }
 
-      } else {
-        toast.error('Fail Authentication')
       }
 
     } catch (error) {
-      console.log("Erro Gerado:", error);
+      console.log(error.message);
+      if(error.message ==='Request failed with status code 404')return toast.info('User Not Authentication')
+      
     }
   }
 

@@ -2,7 +2,6 @@ const { authentication }=require('../../services/login/');
 
 const authenticationController = async (req, res) => {
     try {
-      // console.log('controller:',req.body);
       const user = await authentication(req.body);
       
       if (user.erro) {
