@@ -1,7 +1,19 @@
   import axios from "axios";
 
-  const api = axios.create({
+  export const apiConnectionReservation = axios.create({
     baseURL: "http://localhost:3001/reservations",
   });
 
-  export default api;
+
+  export const apiConnectionLogin = axios.create({
+    baseURL: "http://localhost:3001/logins",
+  });
+
+
+
+  export const apiAuthentication = axios.create({
+    baseURL: "http://localhost:3001/logins/authentication",
+  });
+
+  
+  

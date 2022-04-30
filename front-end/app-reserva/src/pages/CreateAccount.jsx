@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { apiConnectionLogin } from "../service/connection-back";
 import Header from '../components/Header/Header';
 import Fotter from '../components/Fotter/Fotter';
 import './css/CreateAccount.css';
@@ -9,16 +10,51 @@ export default class CreateAccount extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
+        user:'',
+        email:'',
+        password:'',
+        address:'',
+        city:''
     }
     this.handleClick = this.handleClick.bind(this);
+    this.handleCreate = this.handleCreate.bind(this);
+    this.onInputChange=this.onInputChange.bind(this);
   }
 
   handleClick() {
-    this.props.history.push('/createaccount');
+    this.props.history.push('/login');
+  }
+
+
+  onInputChange({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  async handleCreate() {
+    try {
+      const {  user, email, password, address, city } = this.state;
+      await apiConnectionLogin.post('/',{
+         user:user,
+         email:email,
+         password:password,
+         address:address,
+         city:city
+         });
+ <div class="alert alert-primary" role="alert">
+  This is a primary alert—check it out!
+ </div>
+      this.handleClick();
+    } catch (error) {
+      console.log("Erro Gerado:", error);
+    }
   }
 
   render() {
+    const {user, email, password, address, city}=this.state;
     return (
       <div class="col-12">
         <Header />
@@ -33,6 +69,9 @@ export default class CreateAccount extends Component {
           class="form-control custon-inputs-css"
           aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-default"
+          name="user"
+          value={user}
+          onChange={this.onInputChange}
         />
        </div>
 
@@ -44,6 +83,9 @@ export default class CreateAccount extends Component {
           class="form-control custon-inputs-css"
           aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-default"
+          name="email"
+          value={email}
+          onChange={this.onInputChange}
         />
        </div>
 
@@ -56,6 +98,9 @@ export default class CreateAccount extends Component {
           class="form-control custon-inputs-css"
           aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-default"
+          name="password"
+          value={password}
+          onChange={this.onInputChange}
         />
        </div>
 
@@ -67,6 +112,9 @@ export default class CreateAccount extends Component {
           class="form-control custon-inputs-css"
           aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-default"
+          name="address"
+          value={address}
+          onChange={this.onInputChange}
         />
        </div>
 
@@ -79,6 +127,9 @@ export default class CreateAccount extends Component {
           class="form-control custon-inputs-css"
           aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-default"
+          name="city"
+          value={city}
+          onChange={this.onInputChange}
         />
        </div>
 
@@ -88,14 +139,11 @@ export default class CreateAccount extends Component {
               <button
                 type="button"
                 class="btn btn-primary btn-lg custom-button"
-                onClick={this.handleClick}>
+                onClick={this.handleCreate}>
                 Create User
               </button>
             </div>
           </div>
-        
-
-
         </form>
         <Fotter />
 
