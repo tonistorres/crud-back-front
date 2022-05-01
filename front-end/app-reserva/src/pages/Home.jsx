@@ -33,6 +33,7 @@ export default class Home extends Component {
     this.onButtonDelete = this.onButtonDelete.bind(this);
     this.handleUpdateStatus = this.handleUpdateStatus.bind(this);
     this.handleTokenLocalStorage = this.handleTokenLocalStorage.bind(this);
+    this.handleBootTestTokenExpired = this.handleBootTestTokenExpired.bind(this);
   }
 
   componentDidMount() {
@@ -50,6 +51,23 @@ handleTokenLocalStorage(){
       typedText: evt.target.value
     })
   }
+
+async handleBootTestTokenExpired(){
+
+try {
+  const token = JSON.parse(window.localStorage.getItem("token"));
+   await apiConnectionReservation.get('/',
+    {
+      headers: { authorization: token }
+    });
+} catch (error) {
+  console.log(error.message);
+  if(error.message==='Request failed with status code 401'){
+    toast.info('Token Expired');
+  }
+}
+  
+}
 
   async handleFindAll() {
     try {
@@ -71,7 +89,9 @@ handleTokenLocalStorage(){
 
   async handleDelete(id) {
     try {
-      await apiConnectionReservation.delete(`/${id}`);
+      const token = JSON.parse(window.localStorage.getItem("token"));
+      await apiConnectionReservation.delete(`/${id}`,{ headers: { authorization: token }});
+      toast.success('Register DELETE Sucess!!!');
       this.handleFindAll();
     } catch (error) {
       console.log(error);
@@ -87,7 +107,7 @@ handleTokenLocalStorage(){
 
     try {
       const { clientGlogal, roomGlobal, daysGlobal, reservationDateGlobal, totalPriceGlobal } = this.state;
-
+      const token = JSON.parse(window.localStorage.getItem("token"));
       await apiConnectionReservation.post('/',
         {
           client: clientGlogal,
@@ -95,7 +115,7 @@ handleTokenLocalStorage(){
           days: daysGlobal,
           reservation: reservationDateGlobal,
           totalPrice: totalPriceGlobal
-        });
+        },{headers: { authorization: token }});
 
       this.handleFindAll();
 
@@ -147,8 +167,8 @@ handleTokenLocalStorage(){
             token={tokenState}
             onButtonDelete={this.onButtonDelete}
             handleUpdateStatus={this.handleUpdateStatus}
-            typedText={this.state.typedText}
-
+            typedText={this.state.typedText}   
+            handleBootTestTokenExpired={this.handleBootTestTokenExpired}         
           />
         </MyContext.Provider>
         <ToastContainer />

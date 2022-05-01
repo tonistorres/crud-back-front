@@ -683,6 +683,8 @@ npm install jsonwebtoken
 npm i dotenv
 ```
 
+### 9.3 - Detalhando a Autenticação:
+
 
 
 

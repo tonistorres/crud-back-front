@@ -5,6 +5,7 @@ const SECRET = 'xablau';
 module.exports = async (req, res, next) => {
       try {
       const { authorization } = req.headers;
+      
       if (!authorization) {
       return res
         .status(401)

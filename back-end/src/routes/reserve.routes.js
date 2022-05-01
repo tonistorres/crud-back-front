@@ -1,8 +1,8 @@
 const reserveRoutes = require('express').Router();
 const reserve = require('../controllers/reserve');
-const authorization = require('../middlewares/middlAuthorization');
 
-reserveRoutes.route('/', authorization)
+
+reserveRoutes.route('/')
 .get(reserve.list)
 .post(reserve.create)
 

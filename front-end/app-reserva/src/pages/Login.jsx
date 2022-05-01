@@ -21,7 +21,7 @@ export default class Login extends Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
-    this.onInputChange = this.onInputChange.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);    
   }
 
 
@@ -38,6 +38,11 @@ export default class Login extends Component {
   handleClick() {
     this.props.history.push('/home');
   }
+
+
+  // handleClickAccount() {
+  //   this.props.history.push('/createaccount');
+  // }
 
 
   async handleAuthentication() {
@@ -142,7 +147,7 @@ export default class Login extends Component {
               <button
                 type="button"
                 className="btn btn-primary btn-lg custom-button"
-                onClick={this.handleClick}>
+                onClick={()=>{this.props.history.push('/createaccount')}}>
                 Create Account
               </button>
             </div>
