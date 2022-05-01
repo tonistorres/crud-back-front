@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Timer from '../Timer/Timer';
+import MyContext from '../MyContext/MyContext';
 import imgDocker from './docker.gif'
 import bootstrap from './bootstrap.gif'
 import './Button.css';
@@ -11,17 +12,20 @@ export default class ListReserve extends Component {
 
 
     render() {
-        const { arrayProps, onButtonDelete, handleUpdateStatus, typedText,token,handleBootTestTokenExpired} = this.props;
+        const { token} = this.props;
         
         return (
-            <>
+            <MyContext.Consumer>
+                {
+          value => (
+            <div>
                 <div className="App-container-input">
                     <span>Fileter Cliente:</span>
                     <div className='filter-tecnology'>
-                        <div> <input onChange={handleUpdateStatus} value={typedText} className="App-style-search" type="text" /></div>
+                        <div> <input onChange={value.handleUpdateStatus} value={value.typedText} className="App-style-search" type="text" /></div>
                         <img src={imgDocker} alt="Docker" width='100px' height='80px' />
                         <div><img src={bootstrap} alt="Bootstrap" width='100px' height='80px' /></div>
-                        <Timer shandleBootTestTokenExpired={handleBootTestTokenExpired} />
+                        <Timer shandleBootTestTokenExpired={value.handleBootTestTokenExpired} />
                     </div>
                 </div>
                 {
@@ -41,7 +45,7 @@ export default class ListReserve extends Component {
                                 {
 
 
-                                    arrayProps.filter((reserve) => reserve.client.toLowerCase().includes(typedText.toLowerCase()))
+                                    value.arrayProps.filter((reserve) => reserve.client.toLowerCase().includes(value.typedText.toLowerCase()))
                                         .map(({ id, client, days, room, totalPrice }) => (
 
                                             <tr key={id} className="table-success">
@@ -50,7 +54,7 @@ export default class ListReserve extends Component {
                                                 <td>{days}</td>
                                                 <td>{room}</td>
                                                 <td>{totalPrice}</td>
-                                                <td >  <button className='btn-style-one' onClick={() => onButtonDelete(id)}>Excluir</button></td>
+                                                <td >  <button className='btn-style-one' onClick={() => value.onButtonDelete(id)}>Excluir</button></td>
                                             </tr>
 
                                         ))
@@ -60,13 +64,16 @@ export default class ListReserve extends Component {
                             <tfoot className="table-dark">
                                 <tr >
                                     <th>BACK e DB MYSQL - DOKERIZADO</th>
+                                    {`${value.token}`}
                                 </tr>
                             </tfoot>
                         </table>
                             <div className='custom-tken-authentication'><strong>TOKEN:</strong>{`${token}`}</div>
                     </div>
                 }
-            </>
+            </div>
+            )}
+            </MyContext.Consumer>
         )
     }
 }

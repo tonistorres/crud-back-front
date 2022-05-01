@@ -42,7 +42,7 @@ export default class Home extends Component {
   }
 
 handleTokenLocalStorage(){
-  var tokenLocalStorage =JSON.parse( localStorage.getItem("token"));
+  var tokenLocalStorage =JSON.parse( localStorage.getItem("token"));  
   this.setState({tokenState:tokenLocalStorage})
 }
 
@@ -72,6 +72,7 @@ try {
   async handleFindAll() {
     try {
       const token = JSON.parse(window.localStorage.getItem("token"));
+      
       const response = await apiConnectionReservation.get('/',
         {
           headers: { authorization: token }
@@ -138,8 +139,8 @@ try {
 
 
   render() {
-    const { arrayValue,tokenState } = this.state;
-
+    const { tokenState } = this.state;
+console.log(this.tokenState);
     // https://pt-br.reactjs.org/docs/context.html
     const valueDefault = {
       clientGlogal: this.state.clientGlogal,
@@ -147,13 +148,13 @@ try {
       daysGlobal: this.state.daysGlobal,
       reservationDateGlobal: this.state.reservationDateGlobal,
       totalPriceGlobal: this.state.totalPriceGlobal,
-      arrayValue: this.state.arrayValue,
+      arrayProps: this.state.arrayValue,
       onInputChange: this.onInputChange,
       onSaveButtonClick: this.onSaveButtonClick,
       onButtonDelete: this.onButtonDelete,
       typedText: this.state.typedText,
       handleUpdateStatus: this.handleUpdateStatus,
-      
+      handleBootTestTokenExpired:this.handleBootTestTokenExpired
     }
 
     return (
@@ -161,15 +162,7 @@ try {
         <Header />
         <MyContext.Provider value={valueDefault}>
           <FormInputsReserve />
-
-          <ListReserve
-            arrayProps={arrayValue}
-            token={tokenState}
-            onButtonDelete={this.onButtonDelete}
-            handleUpdateStatus={this.handleUpdateStatus}
-            typedText={this.state.typedText}   
-            handleBootTestTokenExpired={this.handleBootTestTokenExpired}         
-          />
+          <ListReserve token={tokenState} />
         </MyContext.Provider>
         <ToastContainer />
       </ContainerManList>
