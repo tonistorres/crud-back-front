@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import MyContext from '../MyContext/MyContext';
 import { FormContainerInputs, InpuText, InpuNumber, InputDate, Button } from './FormInputsReserveStyles';
-export default class FormReserve extends Component {
 
-  render() {
-    return (
-      <MyContext.Consumer>
+
+function FormReserve() {
+  return ( 
+    <MyContext.Consumer>
         {
           value => (
         <form onSubmit={this.onSubmit}>
@@ -68,6 +68,8 @@ export default class FormReserve extends Component {
            )
          }
       </MyContext.Consumer>
-    );
-  }
+   );
 }
+
+export default FormReserve;
+
