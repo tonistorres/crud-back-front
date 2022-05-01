@@ -12,6 +12,20 @@ export const ContainerRedeSociais = styled.section`
     right: 0px;
     width: 100%;
   }
+ 
+`;
+
+export const ContainerElementRedeInsta = styled.span` 
+ @media screen and (max-width: 800px) and (min-width: 1px) {
+   display: none;
+  }
+`;
+
+
+export const ContainerElementRedeFace = styled.span` 
+ @media screen and (max-width: 800px) and (min-width: 1px) {
+   display: none;
+  }
 `;
 
 export const SpanMensagemInformativa =styled.span `

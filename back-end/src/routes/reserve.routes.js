@@ -1,5 +1,6 @@
 const reserveRoutes = require('express').Router();
-const reserve = require('../controllers/reserve')
+const reserve = require('../controllers/reserve');
+
 
 reserveRoutes.route('/')
 .get(reserve.list)

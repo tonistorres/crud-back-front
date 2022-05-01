@@ -261,7 +261,7 @@ git tag -a "nome_tag" -m"" id
                    |-------------->|service|                                 
 ```         
 
-![Docker Node](./frontRedme.png)
+![Font-End](./frontRedme.png)
 
 ### 6 - Setup inicial ambiente do Front-End:
 
@@ -531,14 +531,18 @@ development:{
 };
 
 ```
-##### 8.2.3.3 - Criando a model e a migration da tabela reservation:
+##### 8.2.3.3 - Criando a model e a migration das tabelas reservation e login:
 
 > Para criarmos a  model e a migration utilizando o sequelize-cli de forma automatica, utilizaremos o seguinte comando abaixo:
 
 ```console
-npx sequelize-cli model:generate --nam Reservation --attributes client:string,room:string,days:integer,reservationDate:date,totalPrice:integer
+npx sequelize-cli model:generate --name Reservation --attributes client:string,room:string,days:integer,reservationDate:date,totalPrice:integer
 ```
-##### 8.2.4 - Criando a table reservation no DB MYSQ dentro de um container DOCKER:
+
+```console
+ npx sequelize-cli model:generate --name Login --attributes user:string,email:string,password:string,address:string,city:string
+```
+##### 8.2.4 - Criando a table reservation e Login no DB MYSQ dentro de um container DOCKER:
 
 > Comando de manipulação da estrutura do banco de dados, serão executado dentro do docker devido as variáveis de ambiente do banco que estão vinculadas dentro do container docker, conforme explicitado no docker-compose .
 
@@ -555,6 +559,34 @@ npx sequelize-cli db:create
 ```
 
 - [x] - Vamos criar a tabela Reservations no banco de dados rodando 20220423152943-create-reservation.js;
+
+```console
+npx sequelize-cli db:migrate
+```
+
+- [x] - Modificando o escopo de reservation.js de classe para função;
+
+```javascript
+
+module.exports = (sequelize, DataTypes) => {
+
+  const Reservation = sequelize.define('Reservation', {
+    client: DataTypes.STRING,
+    room: DataTypes.STRING,
+    days: DataTypes.INTEGER,
+    reservationDate: DataTypes.DATE,
+    totalPrice: DataTypes.INTEGER
+
+});
+
+return Reservation;
+
+}
+
+```
+
+
+- [x] - Vamos criar a tabela Logins no banco de dados rodando 20220428175057-create-login;
 
 ```console
 npx sequelize-cli db:migrate
@@ -613,3 +645,50 @@ return Reservation;
                   |--------> |database|
 
 ```
+![Ilustração](./jwt.png)
+
+
+### 9 - JWT:
+
+#### 9.1 - O QUE É JWT ?
+
+> Json Web Token, é um padrão para autenticação e troca de informações, definido pela RFC7519. De forma bastante
+> resumida, consiste em um conjunto de solicitações. O JWT se faz essencial por ser uma forma extremamente segura
+> de compartilhamento de informações e autenticação de usuários. É um formato baseado em texto e amplamente aceito 
+> por diversas linguagens, característica que carrega por utilizar JSON como base.
+
+> Esse é o grande diferencial do JWT em relação a outras opções, pois o JSON é um padrão mais vantajoso de troca e
+> armazenamento de informação. Alguns dos concorrentes são o SWT (Simple Web Tokens) e o SAML (Security Assertion 
+> Markup Language Tokens), que usa o padrão XML.
+
+> O JWT é, na verdade, um dos elementos de uma estrutura ainda maior, o JOSE (Json Object Signing and Encryption). 
+> No JOSE, estão contidas várias outras especificações. São elas: o JWE (Json Web Encryption), responsável pela 
+> criptografia para a assinatura do token; o JWA (Json Web Algorithms), a respeito do algoritmo; JWK (Json Web Keys)
+> , correspondente as chaves para assinatura; JWS (Json Web Signature), a assinatura do token. Por fim, o JWT, 
+> elemento JOSE, é o token em si
+> [Fonte: Blog Trybe ](https://blog.betrybe.com/tecnologia/jwt-json-web-tokens/);
+
+
+### 9.2 - Instalando Pacote JWT:
+
+- [x] - Primeiro iremos instalar o pacote npm jsonwebtoken;
+
+```console 
+npm install jsonwebtoken
+```
+
+- [x] - Instalando dotenv para trabalharmos com vaiáveis de ambiente;
+
+```console 
+npm i dotenv
+```
+
+### 9.3 - Detalhando a Autenticação:
+
+
+
+
+
+# BOOTSTRAP DOCUMENTAR: https://www.youtube.com/watch?v=90EGEu8tqY8
+
+# Notitify Pacote: https://www.youtube.com/watch?v=gKXGndx1zu8

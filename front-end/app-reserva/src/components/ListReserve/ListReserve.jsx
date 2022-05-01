@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Timer from '../Timer/Timer';
 import imgDocker from './docker.gif'
 import bootstrap from './bootstrap.gif'
 import './Button.css';
 import './Filter.css';
+import './TokenAuthenctication.css';
 
 export default class ListReserve extends Component {
 
+
+
     render() {
-        const { arrayProps, onButtonDelete, handleUpdateStatus, typedText } = this.props;
+        const { arrayProps, onButtonDelete, handleUpdateStatus, typedText,token,handleBootTestTokenExpired} = this.props;
+        
         return (
             <>
                 <div className="App-container-input">
@@ -17,6 +21,7 @@ export default class ListReserve extends Component {
                         <div> <input onChange={handleUpdateStatus} value={typedText} className="App-style-search" type="text" /></div>
                         <img src={imgDocker} alt="Docker" width='100px' height='80px' />
                         <div><img src={bootstrap} alt="Bootstrap" width='100px' height='80px' /></div>
+                        <Timer shandleBootTestTokenExpired={handleBootTestTokenExpired} />
                     </div>
                 </div>
                 {
@@ -58,6 +63,7 @@ export default class ListReserve extends Component {
                                 </tr>
                             </tfoot>
                         </table>
+                            <div className='custom-tken-authentication'><strong>TOKEN:</strong>{`${token}`}</div>
                     </div>
                 }
             </>

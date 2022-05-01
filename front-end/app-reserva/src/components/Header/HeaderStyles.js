@@ -67,3 +67,62 @@ export const ContainerLogo = styled.section`
 
 
 `;
+
+
+export const ContainerElementHtml = styled.section` 
+ @media screen and (max-width: 800px) and (min-width: 1px) {
+   display: none;
+  }
+  
+`;
+
+
+export const ContainerElementJest = styled.section` 
+ @media screen and (max-width: 800px) and (min-width: 1px) {
+   display: none;
+  }
+  
+`;
+
+
+export const ContainerElementGitHub = styled.section` 
+ @media screen and (max-width: 800px) and (min-width: 1px) {
+   display: none;
+  }
+  
+`;
+
+
+
+export const ContainerElementUbuntu = styled.section` 
+ @media screen and (max-width: 800px) and (min-width: 1px) {
+   display: none;
+  }
+  
+`;
+
+
+export const ContainerElementJava = styled.section` 
+ @media screen and (max-width: 800px) and (min-width: 1px) {
+   display: none;
+  }
+  
+`;
+
+
+
+export const ContainerElementMocha = styled.section` 
+ @media screen and (max-width: 800px) and (min-width: 1px) {
+   display: none;
+  }
+  
+`;
+
+
+
+export const ContainerElementSequelize = styled.section` 
+ @media screen and (max-width: 800px) and (min-width: 1px) {
+   display: none;
+  }
+  
+`;
