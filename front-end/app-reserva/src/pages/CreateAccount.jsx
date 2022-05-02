@@ -1,62 +1,66 @@
-import React, { Component } from 'react';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from 'react';
 import { apiConnectionLogin } from "../service/connection-back";
 import Header from '../components/Header/Header';
 import Fotter from '../components/Fotter/Fotter';
 import './css/CreateAccount.css';
 
-export default class CreateAccount extends Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-        user:'',
-        email:'',
-        password:'',
-        address:'',
-        city:''
+function CreateAccount({ history }) {
+
+    const [user, setUser] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [address, setAddress] = useState('');
+    const [city, setCity] = useState('');
+    
+    const handleClick = () => {
+        history.push('/login');
     }
-    this.handleClick = this.handleClick.bind(this);
-    this.handleCreate = this.handleCreate.bind(this);
-    this.onInputChange=this.onInputChange.bind(this);
-  }
 
-  handleClick() {
-    this.props.history.push('/login');
-  }
-
-
-  onInputChange({ target }) {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      [name]: value,
-    });
-  }
-
-  async handleCreate() {
-    try {
-      const {  user, email, password, address, city } = this.state;
-      await apiConnectionLogin.post('/',{
-         user:user,
-         email:email,
-         password:password,
-         address:address,
-         city:city
-         });
- <div class="alert alert-primary" role="alert">
-  This is a primary alert—check it out!
- </div>
-      this.handleClick();
-    } catch (error) {
-      console.log("Erro Gerado:", error);
+    const onInputChangeUser = ({ target }) => {
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        setUser(value)
     }
-  }
 
-  render() {
-    const {user, email, password, address, city}=this.state;
-    return (
-      <div class="col-12">
+    const onInputChangeEmail = ({ target }) => {
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        setEmail(value)
+    }
+
+    const onInputChangePassword = ({ target }) => {
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        setPassword(value)
+    }
+
+
+    const onInputChangeAddress = ({ target }) => {
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        setAddress(value)
+    }
+
+    const onInputChangeCity = ({ target }) => {
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        setCity(value)
+    }
+
+    const handleCreate = async () => {
+        try {
+            await apiConnectionLogin.post('/', {
+                user: user,
+                email: email,
+                password: password,
+                address: address,
+                city: city
+            });
+            handleClick();
+        } catch (error) {
+            console.log("Erro Gerado:", error);
+        }
+    }
+
+
+    return ( 
+        <div class="col-12">
         <Header />
         <form class="col-3" >
         <p class="text-justify custom-text-large custom-container-element-center">User</p>
@@ -71,7 +75,7 @@ export default class CreateAccount extends Component {
           aria-describedby="inputGroup-sizing-default"
           name="user"
           value={user}
-          onChange={this.onInputChange}
+          onChange={onInputChangeUser}
         />
        </div>
 
@@ -85,7 +89,7 @@ export default class CreateAccount extends Component {
           aria-describedby="inputGroup-sizing-default"
           name="email"
           value={email}
-          onChange={this.onInputChange}
+          onChange={onInputChangeEmail}
         />
        </div>
 
@@ -100,7 +104,7 @@ export default class CreateAccount extends Component {
           aria-describedby="inputGroup-sizing-default"
           name="password"
           value={password}
-          onChange={this.onInputChange}
+          onChange={onInputChangePassword}
         />
        </div>
 
@@ -114,7 +118,7 @@ export default class CreateAccount extends Component {
           aria-describedby="inputGroup-sizing-default"
           name="address"
           value={address}
-          onChange={this.onInputChange}
+          onChange={onInputChangeAddress}
         />
        </div>
 
@@ -129,7 +133,7 @@ export default class CreateAccount extends Component {
           aria-describedby="inputGroup-sizing-default"
           name="city"
           value={city}
-          onChange={this.onInputChange}
+          onChange={onInputChangeCity}
         />
        </div>
 
@@ -139,7 +143,7 @@ export default class CreateAccount extends Component {
               <button
                 type="button"
                 class="btn btn-primary btn-lg custom-button"
-                onClick={this.handleCreate}>
+                onClick={handleCreate}>
                 Create User
               </button>
             </div>
@@ -148,6 +152,11 @@ export default class CreateAccount extends Component {
         <Fotter />
 
       </div>
-    )
-  }
+
+     );
+
+
+
 }
+
+export default CreateAccount;
