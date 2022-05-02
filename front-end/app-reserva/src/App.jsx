@@ -7,10 +7,9 @@ import Home from './pages/Home.jsx';
 import Login from './pages/Login.jsx';
 import CreateAccoutn from './pages/CreateAccount.jsx';
 
-export default class App extends React.Component {
-  render() {
-    return (
-     <div>
+function App() {
+  return ( 
+    <div>
         <Router>
           <Switch>
             <Route  path="/home" component={ Home } />
@@ -21,6 +20,9 @@ export default class App extends React.Component {
           </Switch>
         </Router>
      </div>  
-    )
-  }
+   );
 }
+
+export default App;
+
+

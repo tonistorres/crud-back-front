@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import MyContext from '../MyContext/MyContext';
 import { FormContainerInputs, InpuText, InpuNumber, InputDate, Button } from './FormInputsReserveStyles';
 
-
-function FormReserve() {
-  return ( 
-    <MyContext.Consumer>
+export default class FormReserve extends Component {
+  render() {
+    return (
+      <MyContext.Consumer>
         {
           value => (
-        <form onSubmit={this.onSubmit}>
+            <form onSubmit={this.onSubmit}>
               <FormContainerInputs>
                 <label htmlFor="name">
                   Cliente:
@@ -65,11 +65,11 @@ function FormReserve() {
 
               </FormContainerInputs>
             </form>
-           )
-         }
+
+          )
+        }
       </MyContext.Consumer>
-   );
+
+    );
+  }
 }
-
-export default FormReserve;
-
