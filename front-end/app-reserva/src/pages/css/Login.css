@@ -1,5 +1,4 @@
 
-
 .custom-container-element-center {
     align-items: center;
     display: flex;
@@ -77,7 +76,7 @@
     .col-10 {width: 83.33%;}
     .col-11 {width: 91.66%;}
     .col-12 {
-        align-items: start;
+        align-items: center;
         background-color: whitesmoke;
         display: flex;
         justify-content: center;
@@ -390,7 +389,7 @@
         color: #333;
         letter-spacing: 1pxs;
         margin-left: 10px;
-        height:6vh;
+        height:7vh;
         width: 89vw;
     }
     

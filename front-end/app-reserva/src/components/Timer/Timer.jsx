@@ -8,7 +8,7 @@ export default class Timer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentCount: 65,
+      currentCount: 3600,
       visible: true,
       redirect:false,
     }
@@ -70,7 +70,7 @@ export default class Timer extends Component {
     if (visible) {
       return (
         <>
-        <ContainerMainTimer>{this.state.currentCount} segundos</ContainerMainTimer>
+        <ContainerMainTimer>{this.state.currentCount} (s) Valid Token</ContainerMainTimer>
         <ToastContainer />
         </>
       );

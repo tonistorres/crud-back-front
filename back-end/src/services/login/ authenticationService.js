@@ -6,7 +6,7 @@ const authenticationService = async (user) => {
   try {
      const SECRET = 'xablau'; 
      const jwtConfig = {
-     expiresIn: '1m',
+     expiresIn: '1h',
      algorithm: 'HS256',
      }
      const resultSearch = await Login.findOne({ where: { email:user.email, password:user.password }});
