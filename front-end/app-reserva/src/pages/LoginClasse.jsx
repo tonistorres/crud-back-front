@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { Component } from 'react';
 import Header from '../components/Header/Header';
 import { apiAuthentication } from "../service/connection-back";
 import Fotter from '../components/Fotter/Fotter';
@@ -7,31 +7,49 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import './css/Login.css';
 
 
-function Login({history}) {
+export default class Login extends Component {
 
-const [email, setEmail]=useState('');
-const [password, setPassword] = useState('');
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      email: '',
+      password: '',
+      messageAuthentication: 0,
+
+    }
+
+    this.handleClick = this.handleClick.bind(this);
+    this.handleAuthentication = this.handleAuthentication.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);    
+  }
 
 
-const onInputChangeEmail = ({ target }) => {
+
+
+  onInputChange({ target }) {
+    const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    setEmail(value)
-}
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  handleClick() {
+    this.props.history.push('/home');
+  }
 
 
-const onInputChangePassword = ({ target }) => {
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    setPassword(value)
-}
+  // handleClickAccount() {
+  //   this.props.history.push('/createaccount');
+  // }
 
-const handleClick = () =>{
-history.push('/home');
-}
 
-const handleAuthentication =async() =>{
-try {
- 
-    if(!email.length && password.length){
+  async handleAuthentication() {
+    try {
+      const { email, password } = this.state;
+
+      if(!email.length && password.length){
         toast.info('Null email field!')
       }
 
@@ -53,19 +71,25 @@ try {
           });
 
         if (token) {
-          localStorage.setItem("token", JSON.stringify(token.data))
-          handleClick();
-        }  
-      }     
-} catch (error) {
-    console.log(error.message);
-    if(error.message ==='Request failed with status code 404')return toast.info('User Not Authentication')
-}
-}
+          await window.localStorage.setItem("token", JSON.stringify(token.data))
+          this.handleClick();
+        }
+
+      }
+
+    } catch (error) {
+      console.log(error.message);
+      if(error.message ==='Request failed with status code 404')return toast.info('User Not Authentication')
+      
+    }
+  }
 
 
-    return ( 
-        <div className="col-12">
+  render() {
+    const { email, password } = this.state;
+
+    return (
+      <div className="col-12">
         <Header />
         <form className="col-3" >
 
@@ -82,7 +106,7 @@ try {
               aria-describedby="inputGroup-sizing-default"
               name="email"
               value={email}
-              onChange={onInputChangeEmail}
+              onChange={this.onInputChange}
               placeholder="example@xmail.com"
             />
           </div>
@@ -99,7 +123,7 @@ try {
               aria-describedby="inputGroup-sizing-default"
               name="password"
               value={password}
-              onChange={onInputChangePassword}
+              onChange={this.onInputChange}
               placeholder="ExAmplE_Xablau"
             />
           </div>
@@ -110,7 +134,7 @@ try {
               <button
                 type="button"
                 className="btn btn-primary btn-lg custom-button"
-                onClick={handleAuthentication}
+                onClick={this.handleAuthentication}
               >
                 Connect System
               </button>
@@ -123,7 +147,7 @@ try {
               <button
                 type="button"
                 className="btn btn-primary btn-lg custom-button"
-                onClick={()=>{history.push('/createaccount')}}>
+                onClick={()=>{this.props.history.push('/createaccount')}}>
                 Create Account
               </button>
             </div>
@@ -137,7 +161,6 @@ try {
         </form>
         <Fotter />
       </div>
-     );
+    )
+  }
 }
-
-export default Login;
