@@ -224,13 +224,30 @@ git tag -a "nome_tag" -m"" id
                   |
                   |-------->|controllers|
                   |
-                  |-------->|services|
+                  |---------->|database|
+                  |               |
+                  |               |----------------->|config|
+                  |               |
+                  |               |----------------->|migrations|
+                  |               |
+                  |               |----------------->|models|
+                  |               |
+                  |               |----------------->|seedrs|
                   |
                   |-------->|middlewares|
                   |
                   |-------->|routes|
                   |
+                  |-------->|services|
+                  |             | 
+                  |             |---------------------->|login|
+                  |             |
+                  |             |---------------------->|reserve|
+                  |
                   |--------> |utils|
+                                    
+
+
 |front-end|                  
      |
      |---------> |node_modules|
@@ -241,21 +258,25 @@ git tag -a "nome_tag" -m"" id
                    |
                    |------------->|components|   
                    |                   |
+                   |                   |--------->|FormReserve|
+                   |                   |
                    |                   |--------->|Fotter|
                    |                   |
                    |                   |--------->|Header|
-                   |                   |
-                   |                   |--------->|InputsReserve|
                    |                   |
                    |                   |---------->|ListReserve|
                    |                   |
                    |                   |---------->|Loading|
                    |                   |
-                   |                   |---------->|NotFound| 
+                   |                   |---------->|MyContext| 
+                   |                   |
+                   |                   |---------->|NotFound|
+                   |                   | 
+                   |                   |---------->|Timer|  
                    |
                    |--------------->|pages|
                    |                   |
-                   |                   |------->|Home| 
+                   |                   |------->|css| 
                    |
                    |
                    |-------------->|service|                                 
@@ -277,7 +298,7 @@ mkdir front-end
 cd front-end
 ```
 
-- [x] - Rodando o comando de criacao da pasta de trabalho;
+- [x] - Rodando o comando npx que cria a estrutura de pastas e arquivos do front-end;
 
 ```console
 npx create-react-app app-reservas
@@ -302,17 +323,48 @@ npx create-react-app app-reservas
 ```
 
 - [Link Pacote bootstrap ](https://www.npmjs.com/package/bootstrap)
-
-
-
-- [x] - bootstrap: ^5.1.3;
   
+> Para integrarmos o BootStrap a minha aplicaçao primeiro devemos fazer a instalação da biblioteca 
+> bootstrap na aplicação, pois, o reactstrap não inclui o bootstrap(video: a partir de 2min 05s):
+
 ```console
- npm i bootstrap
+npm install --save bootstrap
+```
+Logo em Seguida instalar o reactstrap(video: a partir 2min 38s ):
+
+```console
+npm install --save reactstrap react react-dom
 ```
 
-- [Link Pacote bootstrap ](https://www.npmjs.com/package/bootstrap)
+> Depois precisamos fazer uma importação do bootstrap.mim no arquivo index.js dentro da pastas src:
 
+```console
+|font-end|
+    |
+    |---------------->|app-reserva|
+                            |
+                            |--------------->|src|
+                                               |
+                                               |--------> Arquivo: >> index.js <<
+```
+
+> Conteúdo index.js
+
+```console
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
+import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    <App />  
+);
+
+```
+
+- [Tutorial com integrar o Framework React com a biblioteca bootsrtap](https://www.youtube.com/watch?v=90EGEu8tqY8)
 
 - [x] - react: ^18.0.0;
   
@@ -339,7 +391,20 @@ npx create-react-app app-reservas
 ```    
 
 - [Link Pacote styled-components ](https://www.npmjs.com/package/styled-components)
-    
+
+
+- [x] - React Toastify: ^5.1.3;
+  
+```console
+ npm i react-toastify
+```
+
+> Uma lib que te por propósito tornar mais simples o processo de exibir notificações para o usuário.
+
+- [Link Pacote reac-toastify ](https://www.npmjs.com/package/react-toastify)
+
+- [Tutorial React-toastify](https://www.youtube.com/watch?v=gKXGndx1zu8)
+
 
 ### 6.2 - Resumo: Comentário de pastas e arquivos do projeto:
 
@@ -359,7 +424,7 @@ npx create-react-app app-reservas
 
 > Cotém todos os arquivos js e jsx responsável pela rederização do Rodapé da aplicação. 
 
-##### 6.2.2.3 - front-end/app-reserva/src/components/InputsReserve: 
+##### 6.2.2.3 - front-end/app-reserva/src/components/FormReserve: 
 
 > Cotém todos os arquivos js e jsx responsável pela rederização do Formulário da aplicação. 
 
@@ -377,18 +442,28 @@ npx create-react-app app-reservas
 
 > Cotém todos os arquivos js, jsx e gif responsável pela rederização do carregamento inicial (apresentação) da aplicação. 
 
+##### 6.2.2.7 - front-end/app-reserva/src/components/MyContext: 
+
+> Cotém todos os arquivos jsx responsável pela abstração do meu contexto "store". 
+
+##### 6.2.2.8 - front-end/app-reserva/src/components/Timer: 
+
+> Cotém todos os arquivos jsx e js responsável pela renderização de um crônometro que irá controlar o tempo em que uma seção será aberta para usuário levando em consideração o tempo do token gerado. 
+
+
 ##### 6.2.3 - front-end/app-reserva/src/pages:
 
 > Toda parte pagina da aplicação irá ficar disposta nessa pasta.
 
 
-##### 6.2.3.1 - front-end/app-reserva/src/pages/Home: 
+##### 6.2.3.1 - front-end/app-reserva/src/pages/css: 
 
-> Pagina principal da aplicação, tem por uma das suas responsabilidades agregar todos os componentes em sua estrutura bem como agregar o estado global dos componentes filhos.
+> Contém alguns arquivos de configurações relacionado a arquivos jsx da pasta pages.
 
 ##### 6.2.4 - front-end/app-reserva/src/service:
 
 > Toda parte de servir à aplicação irá ficar disposta nessa pasta.
+
 
 ![Docker Node](./dockerNode.jpeg)
 
@@ -592,22 +667,21 @@ return Reservation;
 npx sequelize-cli db:migrate
 ```
 
-- [x] - Modificando o escopo de reservation.js de classe para função;
+- [x] - Modificando o escopo de login.js de classe para função;
 
 ```javascript
 
 module.exports = (sequelize, DataTypes) => {
 
-  const Reservation = sequelize.define('Reservation', {
-    client: DataTypes.STRING,
-    room: DataTypes.STRING,
-    days: DataTypes.INTEGER,
-    reservationDate: DataTypes.DATE,
-    totalPrice: DataTypes.INTEGER
-
+  const Login = sequelize.define('Login', {
+    user: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING,
+    address: DataTypes.STRING,
+    city: DataTypes.STRING
 });
 
-return Reservation;
+return Login;
 
 }
 
@@ -683,12 +757,3 @@ npm install jsonwebtoken
 npm i dotenv
 ```
 
-### 9.3 - Detalhando a Autenticação:
-
-
-
-
-
-# BOOTSTRAP DOCUMENTAR: https://www.youtube.com/watch?v=90EGEu8tqY8
-
-# Notitify Pacote: https://www.youtube.com/watch?v=gKXGndx1zu8

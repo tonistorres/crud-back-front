@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "celebrate": "^15.0.1"
+    "celebrate": "^15.0.1",
+    "dotenv": "^16.0.0"
   }
 }
