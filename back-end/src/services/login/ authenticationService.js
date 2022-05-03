@@ -4,7 +4,7 @@ const { Login } = require('../../database/models');
 
 const authenticationService = async (user) => {
   try {
-     const SECRET = 'xablau'; 
+     const SECRET =process.env.SECRET_WORD; 
      const jwtConfig = {
      expiresIn: '1h',
      algorithm: 'HS256',
