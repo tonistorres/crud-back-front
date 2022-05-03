@@ -45,7 +45,7 @@ function ListReserve() {
                                         <td>{days}</td>
                                         <td>{room}</td>
                                         <td>{totalPrice}</td>
-                                        <td >  <button className='btn-style-one' onClick={() => value.onButtonDelete(id)}>Excluir</button></td>
+                                        <td >  <button className='btn-style-one' onClick={() => value.handleDelete(id)}>Excluir</button></td>
                                     </tr>
                                 ))
 
