@@ -130,10 +130,6 @@ function HomeProvider({ children }) {
     }
   }
 
-  const onButtonDelete = (id) => {
-    this.handleDelete(id);
-  }
-
   const handleCreate = async () => {
 
     try {
@@ -170,7 +166,6 @@ function HomeProvider({ children }) {
         handleDelete,
         handleCreate,
         onSaveButtonClick,
-        onButtonDelete,
         arrayValue,
         setArrayValue,
         clientGlogal,
