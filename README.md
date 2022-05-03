@@ -687,40 +687,7 @@ return Login;
 
 ```
 
-##### 8.2.5 - Estrutura geral de pastas no Back-End:
-```console
-
-|back-end|
-    |
-    |---------> |node_modules|
-    |
-    |---------> |src| 
-                  |
-                  |-------->|controllers|
-                  |
-                  |-------->|database|
-                  |             |
-                  |             |------------>|config|
-                  |             |
-                  |             |------------>|migrations|
-                  |             |
-                  |             |------------>|models|
-                  |             |
-                  |             |-------------|seeders|
-                  |                  
-                  |-------->|services|
-                  |
-                  |-------->|middlewares|
-                  |
-                  |-------->|routes|
-                  |
-                  |--------> |utils|
-                  |
-                  |--------> |database|
-
-```
 ![Ilustração](./jwt.png)
-
 
 ### 9 - JWT:
 

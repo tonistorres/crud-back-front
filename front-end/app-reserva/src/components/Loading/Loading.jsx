@@ -4,7 +4,7 @@ import imgFull from './fullStack.gif';
 import Header from '../Header/Header.jsx';
 import Fotter from '../Fotter/Fotter.jsx';
 import { ContainerMain } from './LoadingStyles.js';
-
+//
 export default class Loading extends Component {
  
   constructor() {
